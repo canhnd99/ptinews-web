@@ -1,13 +1,13 @@
 package model;
 
-public class Tag extends Abstract<Tag> {
+public class TagModel extends BaseModel<TagModel> {
 
 	private String name;
 
-	public Tag() {
+	public TagModel() {
 	}
 
-	public Tag(String name) {
+	public TagModel(String name) {
 		this.name = name;
 	}
 

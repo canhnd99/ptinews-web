@@ -1,20 +1,18 @@
 package model;
 
-public class Category extends Abstract<Category> {
+public class CategoryModel extends BaseModel<CategoryModel> {
 	
 	private String name;
 	private String description;
-	private boolean status;
 	private String slug;
 	private String thumnail;
 	
-	public Category() {
+	public CategoryModel() {
 	}
 	
-	public Category(String name, String description, boolean status, String slug, String thumnail) {
+	public CategoryModel(String name, String description, String slug, String thumnail) {
 		this.name = name;
 		this.description = description;
-		this.status = status;
 		this.slug = slug;
 		this.thumnail = thumnail;
 	}
@@ -33,14 +31,6 @@ public class Category extends Abstract<Category> {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
 	}
 
 	public String getSlug() {
