@@ -1,27 +1,25 @@
 package model;
 
-public class Article extends Abstract<Article> {
+public class ArticleModel extends BaseModel<ArticleModel> {
 	
 	private String title;
 	private String description;
 	private String content;
 	private String thumnail;
-	private boolean status;
 	private String slug;
 	private String userId;
 	private String categoryId;
 	private String tagId;
 	
-	public Article() {
+	public ArticleModel() {
 	}
 
-	public Article(String title, String description, String content, String thumnail,
-			boolean status, String slug, String userId, String categoryId, String tagId) {
+	public ArticleModel(String title, String description, String content, String thumnail,
+			String slug, String userId, String categoryId, String tagId) {
 		this.title = title;
 		this.description = description;
 		this.content = content;
 		this.thumnail = thumnail;
-		this.status = status;
 		this.slug = slug;
 		this.userId = userId;
 		this.categoryId = categoryId;
@@ -58,14 +56,6 @@ public class Article extends Abstract<Article> {
 
 	public void setThumnail(String thumnail) {
 		this.thumnail = thumnail;
-	}
-
-	public boolean getStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
 	}
 
 	public String getSlug() {
