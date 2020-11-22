@@ -12,18 +12,18 @@
 <link rel="stylesheet" href='<c:url value="static/css/icomoon.css"/>'>
 <link rel="stylesheet" href='<c:url value="static/css/poppin.css"/>'>
 <link rel="stylesheet" href='<c:url value="static/css/themify-icons.css"/>'>
+<link rel="stylesheet" href='<c:url value="static/css/flaticon.css"/>'>
 </head>
 <body>
 	<div class="container">
         <div id="header">
             <div class="header-content">
                 <div class="header-top">
-                    <a href="">
+                    <a href="<c:url value='/trang-chu'/>">
                         <img src="./static/image/logo.png" alt="logo">
                     </a>
                     <div class="right">
                         <button type="submit" id="loginBtn" class="btn-login">Đăng nhập</button>
-                        <!-- <a href="" class="btn-login" id="loginBtn">Đăng nhập</a> -->
                         <a href="" class="btn-sigup">Đăng ký</a>
                         <div class="header-search">
                             <input type="text" placeholder="Tìm kiếm tin tức">
@@ -33,9 +33,9 @@
                 </div>
                 <div class="header-menu">
                     <ul>
-                        <li><a href="">Trang chủ</a></li>
+                        <li><a href="<c:url value='/trang-chu'/>">Trang chủ</a></li>
                         <li class="drop">
-                            <a class="dropbtn" href="">Kinh tế</a>
+                        	<a class="dropbtn" href="<c:url value='/kinh-doanh'/>">Kinh Doanh</a>
                             <div class="dropdown-content">
                                 <a href="#">Tài chính đầu tư</a>
                                 <a href="#">Thị trường</a>
@@ -134,14 +134,14 @@
                             <a href="">
                                 <div class="new-content-f1">
                                     <div class="f1-title">
-                                        <h2> Mỹ nhân "Running Man" Song Ji Hyo trẻ đẹp ấn tượng trong phim mới</h2>
+                                        <h2>Đỗ Thị Hà đăng quang Hoa hậu Việt Nam 2020</h2>
                                     </div>
                                     <div class="f1-content">
                                         <div class="f1-content-img">
-                                        	<img src="./static/image/ji.jpg" alt="JuntechLogo" />
+                                        	<img src="./static/image/hoa-hau.jpg" alt="hoa hau Viet Nam" />
                                         </div>
                                         <div class="f1-content-description">
-                                            Những hình ảnh trong buổi chụp quảng cáo cho bộ phim mới “Did We Love?” của Song Ji Hyo đã được hé lộ. Gần 40 tuổi, mỹ nhân của “Running Man” vẫn trẻ trung đến kinh ngạc.
+                                            Vượt qua 34 thí sinh trong đêm chung kết, Đỗ Thị Hà đã được xướng tên ở ngôi vị cao nhất. Kết quả này không nằm ngoài dự đoán của giới chuyên môn...	
                                         </div>
                                     </div>
                                 </div>
@@ -151,20 +151,20 @@
                                 <div class="new-slide">
                                     <a href="">
                                         <div class="slide-img">
-                                            <img src="./static/image/trump.jpg" alt="">
+                                            <img src="./static/image/hoa-hau-2.jpg" alt="Hoa hau Viet Nam">
                                         </div>
                                         <div class="slide-content">
-                                            <b>Mỹ tái thảo luận kế hoạch cắt quốc tịch cho trẻ sơ sinh nước ngoài</b>
+                                            <b>Nhan sắc đời thường của Hoa hậu Việt Nam 2020 Đỗ Thị Hà</b>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="new-slide">
                                     <a href="">
                                         <div class="slide-img">
-                                            <img src="./static/image/trump.jpg" alt="">
+                                            <img src="./static/image/cong-nghe.jpg" alt="">
                                         </div>
                                         <div class="slide-content">
-                                            <b>Mỹ tái thảo luận kế hoạch cắt quốc tịch cho trẻ sơ sinh nước ngoài</b>
+                                            <b>Diễn đàn doanh nghiệp công nghệ số diễn ra giữa tháng 12</b>
                                         </div>
                                     </a>
                                 </div>

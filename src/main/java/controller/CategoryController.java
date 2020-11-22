@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/trang-chu"})
-public class HomeController extends HttpServlet {
+@WebServlet(urlPatterns = {"/kinh-doanh"})
+public class CategoryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
-		RequestDispatcher rd = req.getRequestDispatcher("views/home.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("views/category.jsp");
 		rd.forward(req, resp);
 	}
 	
@@ -25,5 +25,5 @@ public class HomeController extends HttpServlet {
 			throws ServletException, IOException {
 		
 	}
-}
 
+}
