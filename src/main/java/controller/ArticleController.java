@@ -9,15 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = { "/dang-ky" })
-public class SignupController extends HttpServlet {
-
+@WebServlet(urlPatterns = {"/bai-viet"})
+public class ArticleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
-		RequestDispatcher rd = req.getRequestDispatcher("views/web/signup.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("views/web/article.jsp");
 		rd.forward(req, resp);
 	}
 	
@@ -26,5 +25,5 @@ public class SignupController extends HttpServlet {
 			throws ServletException, IOException {
 		
 	}
-}
 
+}

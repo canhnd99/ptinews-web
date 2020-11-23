@@ -24,7 +24,7 @@
                     </a>
                     <div class="right">
                         <button type="submit" id="loginBtn" class="btn-login">Đăng nhập</button>
-                        <a href="" class="btn-sigup">Đăng ký</a>
+                        <a href="<c:url value='/dang-ky'/>" class="btn-sigup">Đăng ký</a>
                         <div class="header-search">
                             <input type="text" placeholder="Tìm kiếm tin tức">
                             <span class="ti-search"></span>
@@ -131,7 +131,7 @@
                             <p>Mới nhất</p>
                         </div>
                         <div class="new-content">
-                            <a href="">
+                            <a href="<c:url value='/bai-viet'/>">
                                 <div class="new-content-f1">
                                     <div class="f1-title">
                                         <h2>Đỗ Thị Hà đăng quang Hoa hậu Việt Nam 2020</h2>
