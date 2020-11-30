@@ -144,7 +144,7 @@
                             <article class="noi-dung">
                                 <p class="nomal">"Chúng tôi sẽ làm việc với bất kỳ ai có được niềm tin của người dân Mỹ", Tổng thống Nga Vladimir Putin ngày 22/11 nói trên truyền hình quốc gia. "Nhưng niềm tin đó chỉ được trao cho một ứng viên mà chiến thắng được đảng đối lập công nhận, hoặc sau khi kết quả được xác nhận một cách chính đáng, hợp pháp".</p>
                                 <p class="nomal">Ông mô tả quyết định của Điện Kremlin chưa chúc mừng ứng viên tổng thống Mỹ đảng Dân chủ Joe Biden là "bình thường" và không có động cơ thầm kín nào.</p>
-                                <img src="./image/putin.jpg" alt="">
+                                <img src="./static/image/putin.jpg" alt="">
                                 <p class="nomal">"Các thủ tục phải được tuân thủ dựa trên những thông lệ và tiêu chuẩn pháp lý thiết lập sẵn. Không có động cơ thầm kín hay bất kỳ điều gì có thể làm suy giảm thêm mối quan hệ của chúng ta. Đó là cách tiếp cận hoàn toàn bình thường", Tổng thống Putin nói.</p>
                                 <p class="nomal">"Các thủ tục phải được tuân thủ dựa trên những thông lệ và tiêu chuẩn pháp lý thiết lập sẵn. Không có động cơ thầm kín hay bất kỳ điều gì có thể làm suy giảm thêm mối quan hệ của chúng ta. Đó là cách tiếp cận hoàn toàn bình thường", Tổng thống Putin nói.</p>
                                 <p class="nomal"><strong>Vũ Hoàng</strong></p>

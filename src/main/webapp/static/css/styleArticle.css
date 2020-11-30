@@ -9,14 +9,6 @@ body {
     overflow-x: hidden;
 }
 
-/*img:hover {
-    -ms-transform: scale(0.9);
-    /* IE 9 */
-  /*  -webkit-transform: scale(0.9);
-     Safari 3-8 
-    transform: scale(0.9);
-}*/
-
 .container {
     width: 100%;
 }
@@ -235,6 +227,19 @@ p.des{
     float: right;
 }
 
+.noi-dung img {
+	width: 100%;
+	max-width:100%;
+}
+
+.noi-dung img:hover {
+    -ms-transform: none;
+    /* IE 9 */
+    -webkit-transform: none;
+    /* Safari 3-8 */
+    transform: none;
+}
+
 .noi-dung div>ul{
     width: 100%;
     padding-top: 20px;
@@ -280,7 +285,6 @@ p.des{
 .right-2{
     padding-left:30px;
     padding-top:30px;
-
 }
 .right-2>ul>li{
     margin-bottom: 20px;

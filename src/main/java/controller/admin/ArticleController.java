@@ -40,10 +40,9 @@ public class ArticleController extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			String api = "http://localhost:8080/admin/api/v1/article";
-	        String json = DataJSON.getJSONData(api, "POST");
-			ArticleModel[] articles = objectConverter.jsonToListArticles(json);
-			req.setAttribute("articles", articles);
+	        DataJSON.setJSONData(api, "POST");
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 	}
 }
