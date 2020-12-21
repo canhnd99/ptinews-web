@@ -2,9 +2,9 @@ package utils;
 
 import com.google.gson.Gson;
 
-import model.ArticleModel;
-import model.CommentModel;
-import model.UserModel;
+import model.Article;
+import model.Comment;
+import model.User;
 
 public class ObjectConverter {
 	
@@ -14,18 +14,18 @@ public class ObjectConverter {
 		gson = new Gson();
 	}
 
-	public UserModel jsonToUser(String json) {
-		UserModel user = gson.fromJson(json, UserModel.class);
+	public User jsonToUser(String json) {
+		User user = gson.fromJson(json, User.class);
 		return user;
 	}
 
-	public ArticleModel[] jsonToListArticles(String json) {
-		ArticleModel[] arr = gson.fromJson(json, ArticleModel[].class);
+	public Article[] jsonToListArticles(String json) {
+		Article[] arr = gson.fromJson(json, Article[].class);
 		return arr;
 	}
 	
-	public CommentModel[] jsonToListComments(String json) {
-		CommentModel[] arr = gson.fromJson(json, CommentModel[].class);
+	public Comment[] jsonToListComments(String json) {
+		Comment[] arr = gson.fromJson(json, Comment[].class);
 		return arr;
 	}
 }

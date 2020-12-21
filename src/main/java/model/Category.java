@@ -1,16 +1,16 @@
 package model;
 
-public class CategoryModel extends BaseModel<CategoryModel> {
+public class Category extends Base<Category> {
 	
 	private String name;
 	private String description;
 	private String slug;
 	private String thumnail;
 	
-	public CategoryModel() {
+	public Category() {
 	}
 	
-	public CategoryModel(String name, String description, String slug, String thumnail) {
+	public Category(String name, String description, String slug, String thumnail) {
 		this.name = name;
 		this.description = description;
 		this.slug = slug;

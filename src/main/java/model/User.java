@@ -1,6 +1,6 @@
 package model;
 
-public class UserModel extends BaseModel<UserModel> {
+public class User extends Base<User> {
 	
 	private String username;
 	private String password;
@@ -8,10 +8,10 @@ public class UserModel extends BaseModel<UserModel> {
 	private String email;
 	private boolean isAdmin;
 	
-	public UserModel() {
+	public User() {
 	}
 	
-	public UserModel(String username, String password, String salt, String email, boolean isAdmin) {
+	public User(String username, String password, String salt, String email, boolean isAdmin) {
 		this.username = username;
 		this.password = password;
 		this.salt = salt;

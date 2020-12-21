@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.UserModel;
+import model.User;
 import utils.DataJSON;
 import utils.HttpUtil;
 import utils.ObjectConverter;
@@ -27,7 +27,7 @@ public class LoginController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		try {
-			UserModel user = HttpUtil.of(req.getReader()).toModel(UserModel.class);
+			User user = HttpUtil.of(req.getReader()).toModel(User.class);
 			String api = "http://localhost:8080/admin/api/v1/login";
 	        String json = DataJSON.getJSONData(api, "POST");
 			user = objectConverter.jsonToUser(json);

@@ -1,6 +1,6 @@
 package model;
 
-public class ArticleModel extends BaseModel<ArticleModel> {
+public class Article extends Base<Article> {
 	
 	private String title;
 	private String description;
@@ -11,10 +11,10 @@ public class ArticleModel extends BaseModel<ArticleModel> {
 	private String categoryId;
 	private String tagId;
 	
-	public ArticleModel() {
+	public Article() {
 	}
 
-	public ArticleModel(String title, String description, String content, String thumnail,
+	public Article(String title, String description, String content, String thumnail,
 			String slug, String userId, String categoryId, String tagId) {
 		this.title = title;
 		this.description = description;

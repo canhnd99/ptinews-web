@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.ArticleModel;
+import model.Article;
 import utils.DataJSON;
 import utils.ObjectConverter;
 
@@ -28,7 +28,7 @@ public class ArticleController extends HttpServlet {
 		try {
 			String api = "http://localhost:8080/admin/api/v1/article";
 	        String json = DataJSON.getJSONData(api, "GET");
-			ArticleModel[] articles = objectConverter.jsonToListArticles(json);
+			Article[] articles = objectConverter.jsonToListArticles(json);
 			req.setAttribute("articles", articles);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

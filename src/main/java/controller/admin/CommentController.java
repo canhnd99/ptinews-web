@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.CommentModel;
+import model.Comment;
 import utils.DataJSON;
 import utils.ObjectConverter;
 
@@ -36,7 +36,7 @@ public class CommentController extends HttpServlet {
 		String decodeId = new String(byteId, "UTF-8"); 
 		String api = "http://localhost:8080/admin/api/v1/comment?articleId="+ decodeId;
 		String json = DataJSON.getJSONData(api, "GET");
-		CommentModel[] comments = objectConverter.jsonToListComments(json);
+		Comment[] comments = objectConverter.jsonToListComments(json);
 		req.setAttribute("comments", comments);
 	}
 }
