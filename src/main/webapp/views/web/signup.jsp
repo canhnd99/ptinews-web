@@ -6,13 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Đăng Ký</title>
-<link rel="stylesheet" href='<c:url value="static/css/style.css"/>'>
-<link rel="stylesheet" href='<c:url value="static/css/font-awesome.min.css"/>'>
-<link rel="stylesheet" href='<c:url value="static/css/icomoon.css"/>'>
-<link rel="stylesheet" href='<c:url value="static/css/poppin.css"/>'>
-<link rel="stylesheet" href='<c:url value="static/css/themify-icons.css"/>'>
-<link rel="stylesheet" href='<c:url value="static/css/flaticon.css"/>'>
-<link rel="stylesheet" href='<c:url value="static/css/styleSigup.css"/>'>
+<link rel="stylesheet" href='<c:url value="/static/css/style.css"/>'>
+<link rel="stylesheet" href='<c:url value="/static/css/font-awesome.min.css"/>'>
+<link rel="stylesheet" href='<c:url value="/static/css/icomoon.css"/>'>
+<link rel="stylesheet" href='<c:url value="/static/css/poppin.css"/>'>
+<link rel="stylesheet" href='<c:url value="/static/css/themify-icons.css"/>'>
+<link rel="stylesheet" href='<c:url value="/static/css/flaticon.css"/>'>
+<link rel="stylesheet" href='<c:url value="/static/css/styleSigup.css"/>'>
 </head>
 <body>
 	<div class="container">
