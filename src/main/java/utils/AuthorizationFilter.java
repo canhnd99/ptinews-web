@@ -12,6 +12,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.User;
+
 
 public class AuthorizationFilter implements Filter {
 
@@ -31,66 +33,18 @@ public class AuthorizationFilter implements Filter {
 		request.setCharacterEncoding("UTF-8");
 		String uri = request.getRequestURI();
 		String url = uri.substring(request.getContextPath().length(), uri.length());
-
+		
 		if (url.startsWith("/admin")) {
-//			UserModel user = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
-//			if (user != null) {
-//				if (user.getRole().getCode().equals(SystemConstant.ADMIN_CODE)) {
-//					filterChain.doFilter(servletRequest, servletResponse);
-//				} else if (user.getRole().getCode().equals(SystemConstant.USER_CODE)) {
-//					response.sendRedirect(
-//							request.getContextPath() + "/login?action=login&message=not_permission&alert=danger");
-//				}
-//			} else {
-//				response.sendRedirect(request.getContextPath() + "/login?action=login&message=not_login&alert=danger");
-//			}
-		} else if (url.startsWith("/registration")) {
-//			UserModel user = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
-//			if (user != null) {
-//				if (user.getRole().getCode().equals(SystemConstant.ADMIN_CODE)) {
-//					response.sendRedirect(
-//							request.getContextPath() + "/login?action=login&message=not_permission&alert=danger");
-//				} else if (user.getRole().getCode().equals(SystemConstant.USER_CODE)) {
-//					filterChain.doFilter(servletRequest, servletResponse);
-//				}
-//			} else {
-//				response.sendRedirect(request.getContextPath() + "/login?action=login&message=not_login&alert=danger");
-//			}
-		} else if (url.startsWith("/measurement")) {
-//			boolean check = RegistrationController.check;
-//			UserModel user = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
-//			if (user != null) {
-//				if (user.getRole().getCode().equals(SystemConstant.ADMIN_CODE)) {
-//					response.sendRedirect(
-//							request.getContextPath() + "/login?action=login&message=not_permission&alert=danger");
-//				} else if (user.getRole().getCode().equals(SystemConstant.USER_CODE)) {
-//					if (check == false) {
-//						response.sendRedirect(request.getContextPath()
-//								+ "/registration?action=registration&message=not_registration&alert=danger");
-//					} else {
-//						filterChain.doFilter(servletRequest, servletResponse);
-//						RegistrationController.check = false;
-//					}
-//				}
-//			} else {
-//				response.sendRedirect(request.getContextPath() + "/login?action=login&message=not_login&alert=danger");
-//			}
-		} else if(url.startsWith("/confirmation")) {
-//			boolean check = ConfirmationController.check;
-//			UserModel user = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
-//			if(user != null){
-//				if(user.getRole().getCode().equals(SystemConstant.ADMIN_CODE)){
-//					response.sendRedirect(
-//							request.getContextPath() + "/login?action=login&message=not_permission&alert=danger");
-//				}else if(user.getRole().getCode().equals(SystemConstant.USER_CODE)){
-//					if(check == false){
-//						response.sendRedirect(request.getContextPath()+ "/error");
-//					}else{
-//						filterChain.doFilter(servletRequest, servletResponse);
-//						ConfirmationController.check = false;
-//					}
-//				}
-//			}
+			User user = (User) SessionUtil.getInstance().getValue(request, "USER");
+			if(user != null) {
+				if(user.getIsAdmin() == true) {
+					filterChain.doFilter(servletRequest, servletResponse);
+				} else if (user.getIsAdmin() == false) {
+					System.out.println("Ban khong co quyen truy cap trang nay");
+				}
+			} else {
+				System.out.println("Ban chua dang nhap!");
+			}
 		} else {
 			filterChain.doFilter(servletRequest, servletResponse);
 		}

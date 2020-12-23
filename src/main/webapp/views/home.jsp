@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,6 +28,7 @@
                             <input type="text" placeholder="Tìm kiếm tin tức">
                             <span class="ti-search"></span>
                         </div>
+                        <h4>Login as: <c:out value="${ loggedUser.username }"/> </h4> 
                     </div>
                 </div>
                 <div class="header-menu">

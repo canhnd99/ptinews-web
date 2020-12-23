@@ -1,40 +1,54 @@
 package controller;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/signin"})
-public class SigninController extends HttpServlet {
+import model.User;
+import model.service.IUserService;
+import model.service.impl.UserService;
+import utils.HttpUtil;
+import utils.SessionUtil;
 
+@WebServlet(urlPatterns = { "/dang-nhap" })
+public class SigninController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
-			throws ServletException, IOException {
-		String url = "http://localhost:8080/ptinews/admin/api/v1/article";
-		URL obj = new URL(url);
-		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-		con.setRequestMethod("GET");
-		int responseCode = con.getResponseCode();
-		System.out.println("\nSending 'GET' request to URL : " + url);
-		System.out.println("Response Code : " + responseCode);
-		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-		String inputLine;
-		StringBuffer response = new StringBuffer();
-		while ((inputLine = in.readLine()) != null) {
-			response.append(inputLine);
-		}
-		in.close();
-		System.out.println(response.toString());
+
+	IUserService userService;
+
+	public SigninController() {
+		userService = new UserService();
 	}
 
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		String action = req.getParameter("action");
+		if (action != null && action.equals("logout")) {
+			SessionUtil.getInstance().removeValue(req, "USER");
+			RequestDispatcher rd = req.getRequestDispatcher("/views/home.jsp");
+			rd.forward(req, resp);
+		}
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		User user = HttpUtil.of(req.getReader()).toModel(User.class);
+		user = userService.checkLogin(user);
+		if (user != null) {
+			SessionUtil.getInstance().putValue(req, "USER", user);
+			req.setAttribute("loggedUser", SessionUtil.getInstance().getValue(req, "USER"));
+			RequestDispatcher rd = req.getRequestDispatcher("/views/home.jsp");
+			rd.forward(req, resp);
+		} else {
+			System.out.println("Sai thong tin dang nhap");
+		}
+	}
 }

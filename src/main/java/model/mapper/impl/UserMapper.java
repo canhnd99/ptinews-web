@@ -33,6 +33,12 @@ public class UserMapper implements RowMapper<User> {
 			if(rs.getBoolean("status")) {
 				user.setStatus(rs.getBoolean("status"));
 			}
+			if(rs.getDate("created_date") != null) {
+				user.setCreatedDate(rs.getDate("created_date"));
+			}
+			if(rs.getDate("last_modified") != null) {
+				user.setCreatedDate(rs.getDate("last_modified"));
+			}
 			return user;
 		} catch (SQLException e) {
 			e.printStackTrace();

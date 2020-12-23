@@ -2,6 +2,7 @@ package controller.admin;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,39 +10,58 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.User;
-import utils.DataJSON;
+import model.service.IUserService;
+import model.service.impl.UserService;
 import utils.HttpUtil;
-import utils.ObjectConverter;
+import utils.SessionUtil;
+
+/*
+ * admin account:
+ * username: canhnd
+ * password: canhnd15@
+ * email: canhnd15@gmail.com
+ * 
+ * user account:
+ * username: hieupq
+ * password: hieu12@
+ * email: hieupq@gmail.com
+ * */
 
 @WebServlet(urlPatterns = { "/admin/login" })
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	ObjectConverter objectConverter;
+	IUserService userService;
 	
 	public LoginController() {
-		objectConverter = new ObjectConverter();
+		userService = new UserService();
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
-		try {
-			User user = HttpUtil.of(req.getReader()).toModel(User.class);
-			String api = "http://localhost:8080/admin/api/v1/login";
-	        String json = DataJSON.getJSONData(api, "POST");
-			user = objectConverter.jsonToUser(json);
-			System.out.println(user.getEmail());
-			req.setAttribute("user", user);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		User user = HttpUtil.of(req.getReader()).toModel(User.class);
+		user = userService.checkLogin(user);
+		if (user != null) {
+			if(user.getIsAdmin() == true) {
+				SessionUtil.getInstance().putValue(req, "USER", user);
+				req.setAttribute("admin", SessionUtil.getInstance().getValue(req, "USER"));
+				RequestDispatcher rd = req.getRequestDispatcher("/views/home.jsp");
+				rd.forward(req, resp);
+			}
+		} else {
+			System.out.println("Sai thong tin dang nhap");
 		}
 	}
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
-		
+		req.setCharacterEncoding("UTF-8");
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/login.jsp");
+		rd.forward(req, resp);
 	}
 	
 }

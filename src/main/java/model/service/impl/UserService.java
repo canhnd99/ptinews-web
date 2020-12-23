@@ -22,12 +22,14 @@ public class UserService implements IUserService {
 		User clientUser = user;
 		if (user.getEmail() != null && !user.getEmail().isEmpty()) {
 			User dbUser = findOneByEmail(user);
-			String salt = dbUser.getSalt();
-			String userPassword = clientUser.getPassword();
-			String dbHasedPassword = dbUser.getPassword();
-			String userHasedPassword = PasswordUtil.getPassword(userPassword.toCharArray(), salt.getBytes());
-			if (dbHasedPassword.equals(userHasedPassword)) {
-				return dbUser;
+			if (dbUser != null) {
+				String salt = dbUser.getSalt();
+				String userPassword = clientUser.getPassword();
+				String dbHasedPassword = dbUser.getPassword();
+				String userHasedPassword = PasswordUtil.getPassword(userPassword.toCharArray(), salt.getBytes());
+				if (dbHasedPassword.equals(userHasedPassword)) {
+					return dbUser;
+				}
 			}
 		}
 		return null;
@@ -45,9 +47,9 @@ public class UserService implements IUserService {
 		user.setStatus(true);
 		user.setCreatedDate(new Date(System.currentTimeMillis()));
 		user.setLastModified(new Date(System.currentTimeMillis()));
-		
+
 		if (user.getId() != null && user.getEmail() != null && user.getPassword() != null) {
-			if(findOneByEmail(user) == null) {
+			if (findOneByEmail(user) == null) {
 				userDao.save(user);
 			}
 		}
