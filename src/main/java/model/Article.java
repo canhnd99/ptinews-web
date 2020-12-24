@@ -7,23 +7,21 @@ public class Article extends Base<Article> {
 	private String content;
 	private String thumnail;
 	private String slug;
-	private String userId;
-	private String categoryId;
-	private String tagId;
+	private User user;
+	private Category category;
 	
 	public Article() {
 	}
 
 	public Article(String title, String description, String content, String thumnail,
-			String slug, String userId, String categoryId, String tagId) {
+			String slug, User user, Category category) {
 		this.title = title;
 		this.description = description;
 		this.content = content;
 		this.thumnail = thumnail;
 		this.slug = slug;
-		this.userId = userId;
-		this.categoryId = categoryId;
-		this.tagId = tagId;
+		this.user = user;
+		this.category = category;
 	}
 
 	public String getTitle() {
@@ -66,27 +64,19 @@ public class Article extends Base<Article> {
 		this.slug = slug;
 	}
 
-	public String getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public String getCategoryId() {
-		return categoryId;
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setCategoryId(String categoryId) {
-		this.categoryId = categoryId;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
-
-	public String getTagId() {
-		return tagId;
-	}
-
-	public void setTagId(String tagId) {
-		this.tagId = tagId;
-	}	
 }

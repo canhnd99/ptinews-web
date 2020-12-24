@@ -36,7 +36,7 @@ public class ArticleService implements IArticleService {
 	}
 
 	@Override
-	public boolean addNewArticle(Article article, String username, String categoryName) {
+	public boolean addNewArticle(Article article) {
 		return false;
 	}
 

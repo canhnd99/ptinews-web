@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.User;
 import model.service.IUserService;
 import model.service.impl.UserService;
-import utils.HttpUtil;
+import utils.FormUtil;
 import utils.SessionUtil;
 
 @WebServlet(urlPatterns = { "/dang-nhap" })
@@ -39,8 +39,7 @@ public class SigninController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		resp.setContentType("application/json");
-		User user = HttpUtil.of(req.getReader()).toModel(User.class);
+		User user = FormUtil.toModel(User.class, req);
 		user = userService.checkLogin(user);
 		if (user != null) {
 			SessionUtil.getInstance().putValue(req, "USER", user);
@@ -48,7 +47,7 @@ public class SigninController extends HttpServlet {
 			RequestDispatcher rd = req.getRequestDispatcher("/views/home.jsp");
 			rd.forward(req, resp);
 		} else {
-			System.out.println("Sai thong tin dang nhap");
+			resp.sendRedirect(req.getContextPath() + "/trang-chu?action=login&message=error_info&alert=danger");
 		}
 	}
 }

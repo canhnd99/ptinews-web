@@ -11,17 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import utils.SessionUtil;
 
-@WebServlet(urlPatterns = {"/trang-chu"})
-public class HomeController extends HttpServlet {
+@WebServlet(urlPatterns = {"/dang-xuat"})
+public class SignoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
-		SessionUtil.getInstance().getValue(req, "USER");
-		req.setAttribute("loggedUser", SessionUtil.getInstance().getValue(req, "USER"));
+		req.setCharacterEncoding("UTF-8");
+		SessionUtil.getInstance().removeValue(req, "USER");
 		RequestDispatcher rd = req.getRequestDispatcher("/views/home.jsp");
 		rd.forward(req, resp);
 	}
 }
-

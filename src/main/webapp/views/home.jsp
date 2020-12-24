@@ -28,7 +28,10 @@
                             <input type="text" placeholder="Tìm kiếm tin tức">
                             <span class="ti-search"></span>
                         </div>
-                        <h4>Login as: <c:out value="${ loggedUser.username }"/> </h4> 
+                        <div style="display: flex; flex-direction: row; margin-top: 60px">
+                        	<h4>Login as: <c:out value="${ loggedUser.username }"/> </h4>
+                        	<a style="margin-left: 30px" href="<c:url value='/dang-xuat'/>">Đăng Xuất</a>
+                        </div>
                     </div>
                 </div>
                 <div class="header-menu">
@@ -620,21 +623,21 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h3>Đăng nhập</h3>
-            <form action="#" name="flogin" action="">
+            <form action="<c:url value='/dang-nhap'/>" method="post" name="flogin">
                 <div class="field">
                     <span class="fa fa-user" aria-hidden="true"></span>
-                    <input type="text" placeholder="Tên đăng nhập" name="uname" id="username">
+                    <input type="text" placeholder="Email" name="email" id="username" value="hieupq@gmail.com">
                 </div>
                 <div class="field space">
                     <span class="fa fa-lock" aria-hidden="true"></span>
-                    <input type="password" placeholder="Mật khẩu" name="pass" id="pass">
+                    <input type="password" placeholder="Mật khẩu" name="password" id="pass" value="hieu12@">
                 </div>
                 <div class="forget">
                     <a href="#">Quên mật khẩu?</a>
                 </div>
                 <div class="login">
                     <div class="sub">
-                        <input type="button" value ="Đăng nhập" id="submit">
+                        <input type="submit" value ="Đăng nhập" id="submit">
                     </div>
                 </div>
                 <div class="signup">

@@ -122,17 +122,13 @@
         <div id="content">
             <h2>Đăng ký tài khoản PTIN</h2>
             <div class="frm">
-                <form action="">
+                <form action="<c:url value='/dang-ky'/>" method="post">
                     <label for="username"><b>Tên đăng nhập</b></label>
-                    <input type="text"  name="uname" required>
-                    <label for="name"><b>Họ và tên</b></label>
-                    <input type="text"  name="name" required>
+                    <input type="text"  name="username" required>
                     <label for="email"><b>Email</b></label>
                     <input type="text"  name="email" required>
                     <label for="pass"><b>Mật khẩu</b></label>
-                    <input type="password"  name="pass" required>
-                    <label for="repass"><b>Nhập lại mật khẩu</b></label>
-                    <input type="password"  name="repass" required>
+                    <input type="password" name="password" required>
                     <input type="submit" name="btnSubmit" value="Đăng ký">
                 </form>
             </div>

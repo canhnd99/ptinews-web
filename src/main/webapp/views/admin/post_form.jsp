@@ -41,7 +41,7 @@
 					<h2 class="mb-2" align="center">Posts Form</h2>
 
 
-					<form action="create-post" method="post">
+					<form action="<c:url value='/admin/articles'/>?action='create'" method="post">
 						<!-- NHỚ THÊM ENCRYPT = MULTIPART/FORM DATA -->
 
 						<div class="form-group">
@@ -105,9 +105,8 @@
 						</div>
 
 						<div class="form-group">
-							<input class="btn btn-primary" type="submit" value="Save" /> <input
-								class="btn btn-success" type="button" value="Cancel"
-								onclick="javascript:history.go(-1)" />
+							<input class="btn btn-primary" type="submit" value="Save" /> 
+							<input class="btn btn-success" type="button" value="Cancel" onclick="javascript:history.go(-1)" />
 						</div>
 
 					</form>

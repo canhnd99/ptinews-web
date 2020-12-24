@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.User;
 import model.service.IUserService;
 import model.service.impl.UserService;
-import utils.HttpUtil;
+import utils.FormUtil;
 
 @WebServlet(urlPatterns = { "/dang-ky" })
 public class SignupController extends HttpServlet {
@@ -27,7 +27,8 @@ public class SignupController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
-		RequestDispatcher rd = req.getRequestDispatcher("views/web/signup.jsp");
+		req.setCharacterEncoding("UTF-8");
+		RequestDispatcher rd = req.getRequestDispatcher("/views/web/signup.jsp");
 		rd.forward(req, resp);
 	}
 	
@@ -35,10 +36,10 @@ public class SignupController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		resp.setContentType("application/json");
-		
-		User user = HttpUtil.of(req.getReader()).toModel(User.class);
-		userService.addUser(user);
+		User user = FormUtil.toModel(User.class, req);
+		if(user != null) {
+			userService.addUser(user);
+		}
 	}
 }
 
