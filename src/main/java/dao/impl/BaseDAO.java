@@ -30,7 +30,7 @@ public class BaseDAO<T> implements IBaseDAO<T> {
 			}
 			return results;
 		} catch (SQLException e) {
-			return null;
+			return new ArrayList<>();
 		} finally {
 			close();
 		}
