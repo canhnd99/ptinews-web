@@ -34,7 +34,6 @@ public class AuthorizationFilter implements Filter {
 		request.setCharacterEncoding("UTF-8");
 		String uri = request.getRequestURI();
 		String url = uri.substring(request.getContextPath().length(), uri.length());
-		System.out.println(url);
 		if (url.startsWith("/admin/")) {
 //			User user = (User) SessionUtil.getInstance().getValue(request, "USER");
 			User user = (User) request.getSession().getAttribute("admin");
