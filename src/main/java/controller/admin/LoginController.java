@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.User;
 import model.service.IUserService;
 import model.service.impl.UserService;
-import utils.HttpUtil;
+import utils.FormUtil;
 import utils.SessionUtil;
 
 /*
@@ -27,7 +27,7 @@ import utils.SessionUtil;
  * email: hieupq@gmail.com
  * */
 
-@WebServlet(urlPatterns = { "/admin/login" })
+@WebServlet(urlPatterns = { "/login"})
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -41,18 +41,17 @@ public class LoginController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		resp.setContentType("application/json");
-		User user = HttpUtil.of(req.getReader()).toModel(User.class);
+		User user = FormUtil.toModel(User.class, req);
 		user = userService.checkLogin(user);
 		if (user != null) {
 			if(user.getIsAdmin() == true) {
 				SessionUtil.getInstance().putValue(req, "USER", user);
 				req.setAttribute("admin", SessionUtil.getInstance().getValue(req, "USER"));
-				RequestDispatcher rd = req.getRequestDispatcher("/views/home.jsp");
+				RequestDispatcher rd = req.getRequestDispatcher("/views/admin/post_list.jsp");
 				rd.forward(req, resp);
 			}
 		} else {
-			System.out.println("Sai thong tin dang nhap");
+			resp.sendRedirect(req.getContextPath() + "/login?action=login&message=error_info&alert=danger");
 		}
 	}
 	

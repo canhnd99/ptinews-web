@@ -1,4 +1,4 @@
-package controller;
+package controller.admin;
 
 import java.io.IOException;
 
@@ -9,14 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/bai-viet"})
-public class ArticleController extends HttpServlet {
+@WebServlet(urlPatterns = {"/admin/categories"})
+public class CategoryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
-		RequestDispatcher rd = req.getRequestDispatcher("views/web/article.jsp");
+		String action = req.getParameter("action");
+		if(action != null && action.equals("edit")) {
+			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/category_form.jsp");
+			rd.forward(req, resp);
+		}
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/category_list.jsp");
 		rd.forward(req, resp);
 	}
 	
@@ -25,5 +30,4 @@ public class ArticleController extends HttpServlet {
 			throws ServletException, IOException {
 		
 	}
-
 }

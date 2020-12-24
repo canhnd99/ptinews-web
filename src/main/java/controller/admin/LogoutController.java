@@ -1,4 +1,4 @@
-package controller;
+package controller.admin;
 
 import java.io.IOException;
 
@@ -9,21 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/kinh-doanh"})
-public class CategoryController extends HttpServlet {
+import utils.SessionUtil;
+
+@WebServlet(urlPatterns = { "/logout" })
+public class LogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
-		RequestDispatcher rd = req.getRequestDispatcher("views/web/category.jsp");
+		req.setCharacterEncoding("UTF-8");
+		SessionUtil.getInstance().removeValue(req, "USER");
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/login.jsp");
 		rd.forward(req, resp);
 	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
-			throws ServletException, IOException {
-		
-	}
-
 }

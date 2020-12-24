@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -98,25 +97,22 @@ span.psw {
 
 </head>
 <body>
-
 	<h2 align="center">Login to PtinNews</h2>
-
 	<c:if test="${ err_message != null }">
 		<div class="alert alert-danger" role="alert">${err_message}</div>
 	</c:if>
-
-	<form action="do_login" method="post">
+	<form action="<c:url value='/login'/>" method="POST">
 		<div class="imgcontainer">
 			<img style="width: 100px; max-width: 100px" src="../image/user.png"
 				alt="Avatar" class="avatar">
 		</div>
 
 		<div class="container">
-			<label for="uname"><b>Username</b></label> <input type="text"
-				placeholder="Enter Username" name="uname" required value="admin">
+			<label for="uname"><b>Email</b></label> <input type="text"
+				placeholder="Enter email" name="email" required value="canhnd15@gmail.com">
 
 			<label for="psw"><b>Password</b></label> <input type="password"
-				placeholder="Enter Password" name="passwd" required value="admin">
+				placeholder="Enter Password" name="password" required value="canhnd15@">
 
 			<button type="submit">Login</button>
 			<label> <input type="checkbox" checked="checked"

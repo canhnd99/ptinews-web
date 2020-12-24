@@ -40,10 +40,10 @@ public class AuthorizationFilter implements Filter {
 				if(user.getIsAdmin() == true) {
 					filterChain.doFilter(servletRequest, servletResponse);
 				} else if (user.getIsAdmin() == false) {
-					System.out.println("Ban khong co quyen truy cap trang nay");
+					response.sendRedirect(request.getContextPath() + "/login?action=login&message=not_permission&alert=danger");
 				}
 			} else {
-				System.out.println("Ban chua dang nhap!");
+				response.sendRedirect(request.getContextPath() + "/login?action=login&message=not_login&alert=danger");
 			}
 		} else {
 			filterChain.doFilter(servletRequest, servletResponse);
