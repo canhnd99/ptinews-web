@@ -13,7 +13,6 @@ import model.User;
 import model.service.IUserService;
 import model.service.impl.UserService;
 import utils.FormUtil;
-import utils.SessionUtil;
 
 /*
  * admin account:
@@ -27,24 +26,23 @@ import utils.SessionUtil;
  * email: hieupq@gmail.com
  * */
 
-@WebServlet(urlPatterns = { "/login"})
+@WebServlet(urlPatterns = { "/login" })
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	IUserService userService;
-	
+
 	public LoginController() {
 		userService = new UserService();
 	}
-	
+
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		User user = FormUtil.toModel(User.class, req);
 		user = userService.checkLogin(user);
 		if (user != null) {
-			if(user.getIsAdmin() == true) {
+			if (user.getIsAdmin() == true) {
 //				SessionUtil.getInstance().putValue(req, "USER", user);
 //				req.setAttribute("admin", SessionUtil.getInstance().getValue(req, "USER"));
 				req.getSession().setAttribute("admin", user);
@@ -55,13 +53,13 @@ public class LoginController extends HttpServlet {
 			resp.sendRedirect(req.getContextPath() + "/login?action=login&message=error_info&alert=danger");
 		}
 	}
-	
+
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/login.jsp");
+		System.out.println("doget Login called");
 		rd.forward(req, resp);
 	}
-	
+
 }

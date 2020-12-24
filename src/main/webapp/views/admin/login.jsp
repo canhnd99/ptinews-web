@@ -115,9 +115,6 @@ span.psw {
 				placeholder="Enter Password" name="password" required value="canhnd15@">
 
 			<button type="submit">Login</button>
-			<label> <input type="checkbox" checked="checked"
-				name="remember" value="Remember me">
-			</label>
 		</div>
 
 		<div class="container" style="background-color: #f1f1f1">

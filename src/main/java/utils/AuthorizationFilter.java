@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -33,9 +34,10 @@ public class AuthorizationFilter implements Filter {
 		request.setCharacterEncoding("UTF-8");
 		String uri = request.getRequestURI();
 		String url = uri.substring(request.getContextPath().length(), uri.length());
-		
-		if (url.startsWith("/admin")) {
-			User user = (User) SessionUtil.getInstance().getValue(request, "USER");
+		System.out.println(url);
+		if (url.startsWith("/admin/")) {
+//			User user = (User) SessionUtil.getInstance().getValue(request, "USER");
+			User user = (User) request.getSession().getAttribute("admin");
 			if(user != null) {
 				if(user.getIsAdmin() == true) {
 					filterChain.doFilter(servletRequest, servletResponse);

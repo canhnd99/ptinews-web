@@ -22,15 +22,25 @@
                         <img src="./static/image/logo.png" alt="logo">
                     </a>
                     <div class="right">
+                    <c:if test="${loggedUser==null}">
                         <button type="submit" id="loginBtn" class="btn-login">Đăng nhập</button>
                         <a href="<c:url value='/dang-ky'/>" class="btn-sigup">Đăng ký</a>
+                     </c:if> 
+                     
+                     <c:if test="${loggedUser!=null}">
+                     	<span> Hello, ${loggedUser.username}</span>
+                     </c:if>   
+                     
                         <div class="header-search">
                             <input type="text" placeholder="Tìm kiếm tin tức">
                             <span class="ti-search"></span>
                         </div>
                         <div style="display: flex; flex-direction: row; margin-top: 60px">
+                        <c:if test="${loggedUser!=null}">
                         	<h4>Login as: <c:out value="${ loggedUser.username }"/> </h4>
                         	<a style="margin-left: 30px" href="<c:url value='/dang-xuat'/>">Đăng Xuất</a>
+                        </c:if>
+                        	
                         </div>
                     </div>
                 </div>
