@@ -446,6 +446,14 @@ input[type=checkbox], input[type=radio] {
     padding: 0;
 }
 
+
+
+/* =====================Table ========================== */
+
+table.th-category{
+	max-width: 35%;
+}
+
 /* ==================RESPONSIVE========================== */
 
 @media (min-width: 992px){
