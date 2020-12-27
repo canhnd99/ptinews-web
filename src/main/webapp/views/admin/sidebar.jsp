@@ -10,7 +10,7 @@
 		<div class="list-group-item list-group-item-action bg-light nav-item ">
 			<b> Posts </b>
 			<div class="mt-2">
-				<a href="<c:url value='/admin/articles'/>?action=edit" class="border-bottom p-10 block list-group-item-action"> New post</a> 
+				<a href="<c:url value='/admin/articles'/>?action=create" class="border-bottom p-10 block list-group-item-action"> New post</a> 
 				<a href="<c:url value='/admin/articles'/>" class="p-10 block list-group-item-action"> List posts </a>
 			</div>
 		</div>
