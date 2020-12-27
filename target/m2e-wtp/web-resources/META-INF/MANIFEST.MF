@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: canhnd
 Build-Jdk: 1.8.0_261
+=======
+Built-By: admin
+Build-Jdk: 1.8.0_202
+>>>>>>> f0308d94e8064094d8bf309b459626e13ae82caf
 Created-By: Maven Integration for Eclipse
 

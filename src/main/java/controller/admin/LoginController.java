@@ -43,10 +43,8 @@ public class LoginController extends HttpServlet {
 		user = userService.checkLogin(user);
 		if (user != null) {
 			if (user.getIsAdmin() == true) {
-//				SessionUtil.getInstance().putValue(req, "USER", user);
-//				req.setAttribute("admin", SessionUtil.getInstance().getValue(req, "USER"));
 				req.getSession().setAttribute("admin", user);
-				RequestDispatcher rd = req.getRequestDispatcher("/views/admin/post_list.jsp");
+				RequestDispatcher rd = req.getRequestDispatcher("/views/admin/index.jsp");
 				rd.forward(req, resp);
 			}
 		} else {

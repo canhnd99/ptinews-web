@@ -7,8 +7,6 @@ import model.mapper.RowMapper;
 
 
 public class CommentMapper implements RowMapper<Comment> {
-	
-	
 
 	@Override
 	public Comment mapRow(ResultSet rs) {
