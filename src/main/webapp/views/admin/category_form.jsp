@@ -10,7 +10,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Category form</title>
+	<title>${ action } category ${category.name }</title>
 	
 	<link href="<c:url value='/static/css/style-admin.css'/>" rel="stylesheet">
 	<link href="<c:url value='/static/css/simple-sidebar-admin.css'/>" rel="stylesheet">
@@ -33,23 +33,34 @@
 
 				<div class="container">
 
-					<h2 class="mb-2" align="center">Category Form</h2>
+					<h2 class="mb-2" align="center"> ${action} category</h2>
 
-					<form action="create-user" method="post">
+					<form 
+						 <c:if test="${action=='edit' }"> action="update-category" </c:if>
+						 <c:if test="${action=='create' }"> action="create-category" </c:if>
+					 	 method="POST">
 
 						<div class="form-group">
-							<label>Name</label> <input class="form-control" type="text" name="name" />
+							<label>Name</label> <input class="form-control" type="text" name="name" value="${cat.name }"/>
 						</div>
 
 						<div class="form-group">
 							<label>Description</label>
-							<textarea name="description" cols="5" class="form-control"> </textarea>
+							<textarea name="description" cols="5" class="form-control">${cat.description }</textarea>
 						</div>
+						
+						<c:if test="${action=='create' }">
+							<input type="hidden" name="action" value="insert"/>
+						</c:if>
+						
+						<c:if test="${action=='edit' }">
+							<input type="hidden" name="action" value="update"/>
+							<input type="hidden" name="id" value="${cat.id }"/>
+						</c:if>
 
 						<div class="form-group">
-							<input class="btn btn-primary" type="submit" value="Save" /> <input
-								class="btn btn-success" type="button" value="Cancel"
-								onclick="javascript:history.go(-1)" />
+							<input class="btn btn-primary" type="submit" value="Save" />
+							<input class="btn btn-success" type="button" value="Cancel" onclick="javascript:history.go(-1)" />
 						</div>
 
 					</form>

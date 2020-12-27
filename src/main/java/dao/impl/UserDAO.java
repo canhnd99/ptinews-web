@@ -12,6 +12,7 @@ public class UserDAO extends BaseDAO<User> implements IUserDAO {
 		sql.append(" (id, username, password, salt, email,");
 		sql.append(" isAdmin, status, created_date, last_modified)");
 		sql.append(" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		
 		insert(sql.toString(), user.getId(), user.getUsername(), user.getPassword(), user.getSalt(),
 				user.getEmail(), user.getIsAdmin(), user.getStatus(), user.getCreatedDate(), user.getLastModified());
 	}

@@ -1,14 +1,21 @@
-package model.service;
+package dao;
 
 import java.util.List;
 
 import model.Category;
 
-public interface ICategoryService {
-	boolean checkExisted(String name);
-	void insertCategory(Category cat);
+public interface ICategoryDAO {
+	
+	void save(Category cat);
+
+	Category findCategoryByName(String name);
+
 	Category findCategoryById(String id);
+	
 	boolean updateCategory(Category cat);
-	List<Category> listCategory();
+	
+	List<Category> listAllCategory();
+	
 	boolean deleteCategoryById(String id);
+	
 }

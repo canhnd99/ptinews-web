@@ -1,20 +1,26 @@
 package model;
 
 public class Category extends Base<Category> {
-	
 	private String name;
 	private String description;
-	private String slug;
-	private String thumnail;
+	private String user_id; 
 	
 	public Category() {
+		super();
 	}
 	
-	public Category(String name, String description, String slug, String thumnail) {
+	public Category(String name, String description, String user_id) { //to insert new category
+		super();
 		this.name = name;
 		this.description = description;
-		this.slug = slug;
-		this.thumnail = thumnail;
+		this.user_id = user_id;
+	}
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 
 	public String getName() {
@@ -33,19 +39,11 @@ public class Category extends Base<Category> {
 		this.description = description;
 	}
 
-	public String getSlug() {
-		return slug;
+	@Override
+	public String toString() {
+		return "Category [id=" + super.getId() + ", name=" + name + ", description=" + description + ", created_date="
+				+ super.getCreatedDate() + ", last_modified=" + super.getLastModified() + ", user_id=" + user_id + "]";
 	}
+	
 
-	public void setSlug(String slug) {
-		this.slug = slug;
-	}
-
-	public String getThumnail() {
-		return thumnail;
-	}
-
-	public void setThumnail(String thumnail) {
-		this.thumnail = thumnail;
-	}
 }

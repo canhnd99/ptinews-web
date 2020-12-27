@@ -19,7 +19,9 @@ public class BaseDAO<T> implements IBaseDAO<T> {
 
 	@Override
 	public List<T> find(String sql, RowMapper<T> rowMapper, Object... parameters) {
+		
 		List<T> results = new ArrayList<>();
+		
 		try {
 			cnt = DatabaseUtil.getConnection();
 			stm = cnt.prepareStatement(sql);

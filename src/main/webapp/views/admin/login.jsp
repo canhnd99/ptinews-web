@@ -8,12 +8,8 @@
 <title>News - login to admin dashboard</title>
 
 <style>
-body {
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-form {
-	border: 3px solid #f1f1f1;
+.form-padding{
+	padding: 0 35%;
 }
 
 input[type=text], input[type=password] {
@@ -63,34 +59,13 @@ span.psw {
 	float: right;
 	padding-top: 16px;
 }
-/* ALERT */
-.alert {
-	position: relative;
-	padding: .75rem 1.25rem;
-	margin-bottom: 1rem;
-	border: 1px solid transparent;
-	border-radius: .25rem;
-}
 
-.alert-danger {
-	color: #721c24;
-	background-color: #f8d7da;
-	border-color: #f5c6cb;
-}
 
-.alert-success {
-	color: #155724;
-	background-color: #d4edda;
-	border-color: #c3e6cb;
-}
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
 	span.psw {
 		display: block;
 		float: none;
-	}
-	.cancelbtn {
-		width: 100%;
 	}
 }
 </style>
@@ -101,7 +76,7 @@ span.psw {
 	<c:if test="${ err_message != null }">
 		<div class="alert alert-danger" role="alert">${err_message}</div>
 	</c:if>
-	<form action="<c:url value='/login'/>" method="POST">
+	<form action="<c:url value='/login'/>" method="POST" class="form-padding" id="form-login">
 		<div class="imgcontainer">
 			<img style="width: 100px; max-width: 100px" src="../image/user.png"
 				alt="Avatar" class="avatar">
@@ -109,18 +84,14 @@ span.psw {
 
 		<div class="container">
 			<label for="uname"><b>Email</b></label> <input type="text"
-				placeholder="Enter email" name="email" required value="canhnd15@gmail.com">
+				placeholder="Enter email" name="email" required value="hieupq@gmail.com">
 
 			<label for="psw"><b>Password</b></label> <input type="password"
-				placeholder="Enter Password" name="password" required value="canhnd15@">
+				placeholder="Enter Password" name="password" required value="123@aaa">
 
 			<button type="submit">Login</button>
 		</div>
 
-		<div class="container" style="background-color: #f1f1f1">
-			<button type="button" class="cancelbtn">Cancel</button>
-			<span class="psw">Forgot <a href="#">password?</a></span>
-		</div>
 	</form>
 </body>
 </html>

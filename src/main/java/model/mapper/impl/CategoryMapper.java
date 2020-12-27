@@ -23,7 +23,9 @@ public class CategoryMapper implements RowMapper<Category> {
 
 	@Override
 	public Category mapRow(ResultSet rs) {
+		
 		Category category = new Category();
+		
 		try {
 			if (rs.getString("id") != null) {
 				category.setId(rs.getString("id"));
@@ -34,15 +36,14 @@ public class CategoryMapper implements RowMapper<Category> {
 			if (rs.getString("description") != null) {
 				category.setDescription(rs.getString("description"));
 			}
-			if (rs.getBoolean("status")) {
-				category.setStatus(rs.getBoolean("status"));
-			}
-			if (rs.getString("slug") != null) {
-				category.setSlug(rs.getString("slug"));
+			if (rs.getDate("last_modified") != null) {
+				category.setLastModified(rs.getDate("last_modified"));
 			}
 			if (rs.getDate("created_date") != null) {
 				category.setCreatedDate(rs.getDate("created_date"));
 			}
+			category.setUser_id(rs.getString("tbl_user_id"));
+			
 			return category;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
