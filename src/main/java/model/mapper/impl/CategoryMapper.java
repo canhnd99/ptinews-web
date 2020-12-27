@@ -5,20 +5,16 @@ import java.sql.ResultSet;
 import model.Category;
 import model.User;
 import model.mapper.RowMapper;
-import model.service.ICategoryService;
 import model.service.IUserService;
-import model.service.impl.CategoryService;
 import model.service.impl.UserService;
 
 
 public class CategoryMapper implements RowMapper<Category> {
 
 	IUserService userService;
-	ICategoryService categoryService;
 	
 	public CategoryMapper() {
 		userService = new UserService();
-		categoryService = new CategoryService();
 	}
 
 	@Override
@@ -34,14 +30,17 @@ public class CategoryMapper implements RowMapper<Category> {
 			if (rs.getString("description") != null) {
 				category.setDescription(rs.getString("description"));
 			}
-			if (rs.getBoolean("status")) {
-				category.setStatus(rs.getBoolean("status"));
-			}
-			if (rs.getString("slug") != null) {
-				category.setSlug(rs.getString("slug"));
+			if (rs.getString("tbl_user_id") != null) {
+				User user = new User();
+				user.setId(rs.getString("tbl_user_id"));
+				user = userService.findOneById(user);
+				category.setUser(user);
 			}
 			if (rs.getDate("created_date") != null) {
 				category.setCreatedDate(rs.getDate("created_date"));
+			}
+			if(rs.getDate("last_modified") != null) {
+				category.setLastModified(rs.getDate("last_modified"));
 			}
 			return category;
 		} catch (Exception e) {

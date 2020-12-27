@@ -1,11 +1,16 @@
 package dao;
 
+import java.util.List;
+
 import model.User;
 
 public interface IUserDAO {
-	void save(User user);
+	
+	List<User> findAll();
+	
+	int save(User user);
 
 	User findOneByEmail(User user);
 
-	User findOneById(String id);
+	User findOneById(User user);
 }

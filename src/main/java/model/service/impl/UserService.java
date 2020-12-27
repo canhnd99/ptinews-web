@@ -1,6 +1,7 @@
 package model.service.impl;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.UUID;
 
 import dao.IUserDAO;
@@ -10,11 +11,16 @@ import model.service.IUserService;
 import utils.PasswordUtil;
 
 public class UserService implements IUserService {
-
+	
 	IUserDAO userDao;
-
+	
 	public UserService() {
 		userDao = new UserDAO();
+	}
+	
+	@Override
+	public List<User> findAll() {
+		return userDao.findAll();
 	}
 
 	@Override
@@ -36,7 +42,7 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public void addUser(User user) {
+	public boolean addUser(User user) {
 		String salt = PasswordUtil.getSalt();
 		String hasedPassword = PasswordUtil.getPassword(user.getPassword().toCharArray(), salt.getBytes());
 
@@ -50,18 +56,20 @@ public class UserService implements IUserService {
 
 		if (user.getId() != null && user.getEmail() != null && user.getPassword() != null) {
 			if (findOneByEmail(user) == null) {
-				userDao.save(user);
+				return (userDao.save(user) == 1) ? true : false;
 			}
 		}
+		return false;
 	}
 
 	@Override
 	public User findOneByEmail(User user) {
-		return userDao.findOneByEmail(user);
+		user = userDao.findOneByEmail(user);
+		return (user != null) ? user : null;
 	}
 
 	@Override
-	public User findOneById(String id) {
-		return null;
+	public User findOneById(User user) {
+		return userDao.findOneById(user);
 	}
 }

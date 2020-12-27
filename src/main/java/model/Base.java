@@ -5,9 +5,9 @@ import java.sql.Date;
 public class Base<T> {
 
 	private String id;
+	private boolean status;
 	private Date createdDate;
 	private Date lastModified;
-	private boolean status;
 
 	public Base() {
 	}
