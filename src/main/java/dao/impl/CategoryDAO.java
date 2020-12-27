@@ -6,7 +6,6 @@ import java.util.List;
 import dao.ICategoryDAO;
 import model.Category;
 import model.mapper.impl.CategoryMapper;
-import model.mapper.impl.UserMapper;
 
 public class CategoryDAO extends BaseDAO<Category> implements ICategoryDAO{
 
@@ -17,7 +16,7 @@ public class CategoryDAO extends BaseDAO<Category> implements ICategoryDAO{
 		sql.append(" VALUES (?, ?, ?, ?, ?, ?)");
 		
 		insert(sql.toString(), cat.getId(), cat.getName(), cat.getDescription(), 
-					cat.getCreatedDate(), cat.getLastModified(), cat.getUser_id());
+					cat.getCreatedDate(), cat.getLastModified(), cat.getUser().getId());
 	}
 
 	@Override

@@ -30,7 +30,7 @@ public class ArticleController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		String action = req.getParameter("action");
-		if(action != null && action.equals("edit")) {
+		if(action != null && action.equals("create")) {
 			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/post_form.jsp");
 			rd.forward(req, resp);
 		}
@@ -42,9 +42,12 @@ public class ArticleController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		Article article = FormUtil.toModel(Article.class, req);
-		User user = (User)SessionUtil.getInstance().getValue(req, "USER");
-		article.setUser(user);
-		articleService.addNewArticle(article);
+		String action = req.getParameter("create");
+		if(action != null && action.equals("create")){
+			Article article = FormUtil.toModel(Article.class, req);
+			User user = (User)SessionUtil.getInstance().getValue(req, "USER");
+			article.setUser(user);
+			articleService.addNewArticle(article);
+		}
 	}
 }

@@ -21,12 +21,12 @@ public class ArticleService implements IArticleService {
 	}
 
 	@Override
-	public Article findOne(String id) {
+	public Article findOne(Article article) {
 		return null;
 	}
 
 	@Override
-	public List<Article> search(String title) {
+	public List<Article> search(Article article) {
 		return null;
 	}
 
@@ -41,7 +41,7 @@ public class ArticleService implements IArticleService {
 	}
 
 	@Override
-	public boolean deleteArticle(String encodedId) {
+	public boolean deleteArticle(Article article) {
 		return false;
 	}
 

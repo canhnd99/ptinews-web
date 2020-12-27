@@ -4,10 +4,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import model.Article;
+import model.Category;
+import model.User;
 import model.mapper.RowMapper;
+import model.service.ICategoryService;
+import model.service.IUserService;
+import model.service.impl.CategoryService;
+import model.service.impl.UserService;
 
 
 public class ArticleMapper implements RowMapper<Article> {
+	
+	IUserService userService;
+	ICategoryService categoryService;
+	
+	public ArticleMapper() {
+		userService = new UserService();
+		categoryService = new CategoryService();
+	}
 
 	@Override
 	public Article mapRow(ResultSet rs) {
@@ -34,6 +48,17 @@ public class ArticleMapper implements RowMapper<Article> {
 			if(rs.getString("slug") != null) {
 				entity.setSlug(rs.getString("slug"));
 			}
+			if(rs.getString("tbl_user_id") != null) {
+				User user = new User();
+				user.setId(rs.getString("tbl_user_id"));
+				user = userService.findOneById(user);
+				entity.setUser(user);
+			}
+//			if(rs.getString("tbl_category_id") != null) {
+//				Category category = new Category();
+//				category.setId(rs.getString("tbl_category_id"));
+//				category = categoryService.findCategoryById();
+//			}
 			if(rs.getDate("created_date") != null) {
 				entity.setCreatedDate(rs.getDate("created_date"));
 			}

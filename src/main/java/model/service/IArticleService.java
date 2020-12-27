@@ -6,10 +6,10 @@ import model.Article;
 
 public interface IArticleService {
 	List<Article> findAll();
-	Article findOne(String id);
-	List<Article> search(String title);
+	Article findOne(Article article);
+	List<Article> search(Article article);
 	List<Article> findByEvent();
 	boolean addNewArticle(Article article);
-	boolean deleteArticle(String encodedId);
+	boolean deleteArticle(Article article);
 	boolean updateArticle(Article article, String encodedId);
 }
