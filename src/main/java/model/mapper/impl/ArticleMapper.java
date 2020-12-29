@@ -25,47 +25,45 @@ public class ArticleMapper implements RowMapper<Article> {
 
 	@Override
 	public Article mapRow(ResultSet rs) {
-		Article entity = new Article();
+		Article article = new Article();
 		try {
 			if(rs.getString("id") != null) {
-				entity.setId(rs.getString("id"));
+				article.setId(rs.getString("id"));
 			}
 			if(rs.getString("title") != null){
-				entity.setTitle(rs.getString("title"));
+				article.setTitle(rs.getString("title"));
 			}
 			if(rs.getString("description") != null) {
-				entity.setDescription(rs.getString("description"));
+				article.setDescription(rs.getString("description"));
 			}
 			if(rs.getString("content") != null) {
-				entity.setContent(rs.getString("content"));
+				article.setContent(rs.getString("content"));
 			}
 			if(rs.getString("thumnail") != null) {
-				entity.setThumnail(rs.getString("thumnail"));
+				article.setThumnail(rs.getString("thumnail"));
 			}
-			if(rs.getBoolean("status")) {
-				entity.setStatus(rs.getBoolean("status"));
-			}
-			if(rs.getString("slug") != null) {
-				entity.setSlug(rs.getString("slug"));
+			if(rs.getString("status") != null) {
+				article.setStatus(rs.getString("status"));
 			}
 			if(rs.getString("tbl_user_id") != null) {
 				User user = new User();
 				user.setId(rs.getString("tbl_user_id"));
 				user = userService.findOneById(user);
-				entity.setUser(user);
+				article.setUser(user);
 			}
-//			if(rs.getString("tbl_category_id") != null) {
-//				Category category = new Category();
-//				category.setId(rs.getString("tbl_category_id"));
-//				category = categoryService.findCategoryById();
-//			}
+			if(rs.getString("tbl_category_id") != null) {
+				Category category = new Category();
+				category.setId(rs.getString("tbl_category_id"));
+				category = categoryService.findCategoryById(category);
+				article.setCategory(category);
+			}
 			if(rs.getDate("created_date") != null) {
-				entity.setCreatedDate(rs.getDate("created_date"));
+				article.setCreatedDate(rs.getDate("created_date"));
 			}
 			if(rs.getDate("last_modified") != null) {
-				entity.setLastModified(rs.getDate("last_modified"));
+				article.setLastModified(rs.getDate("last_modified"));
 			}
-			return entity;
+			return article;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

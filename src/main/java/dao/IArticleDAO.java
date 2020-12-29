@@ -9,7 +9,7 @@ public interface IArticleDAO {
 	List<Article> findByTitle(Article article);
 	Article findOne(Article article);
 	List<Article> findByEvent();
-	boolean save(Article article);
+	int save(Article article);
 	boolean deleteArticle(Article article);
 	boolean updateArticle(Article article);
 }

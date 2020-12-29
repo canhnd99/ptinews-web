@@ -42,15 +42,17 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public boolean addUser(User user) {
+	public boolean add(User user) {
 		String salt = PasswordUtil.getSalt();
 		String hasedPassword = PasswordUtil.getPassword(user.getPassword().toCharArray(), salt.getBytes());
 
 		user.setId(UUID.randomUUID().toString());
 		user.setSalt(salt);
 		user.setPassword(hasedPassword);
-		user.setAdmin(false);
-		user.setStatus(true);
+		if(user.getIsAdmin() != true) {
+			user.setAdmin(false);
+		}
+		user.setStatus(1);
 		user.setCreatedDate(new Date(System.currentTimeMillis()));
 		user.setLastModified(new Date(System.currentTimeMillis()));
 
@@ -70,6 +72,25 @@ public class UserService implements IUserService {
 
 	@Override
 	public User findOneById(User user) {
-		return userDao.findOneById(user);
+		user = userDao.findOneById(user);
+		return (user != null) ? user : null;
+	}
+
+	@Override
+	public boolean delete(User user) {
+		if(user.getEmail() != null) {
+			user = findOneByEmail(user);
+			return (user != null) ? userDao.deleteUser(user) : false;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean update(User user) {
+		if(user != null) {
+			user = findOneById(user);
+			return (user != null) ? userDao.updateUser(user) : false;
+		}
+		return false;
 	}
 }

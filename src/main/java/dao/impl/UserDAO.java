@@ -21,7 +21,7 @@ public class UserDAO extends BaseDAO<User> implements IUserDAO {
 		StringBuilder sql = new StringBuilder("INSERT INTO tbl_user");
 		sql.append(" (id, username, password, salt, email,");
 		sql.append(" isAdmin, status, created_date, last_modified)");
-		sql.append(" VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+		sql.append(" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		return insert(sql.toString(), user.getId(), user.getUsername(), user.getPassword(), user.getSalt(),
 				user.getEmail(), user.getIsAdmin(), user.getStatus(), user.getCreatedDate(), user.getLastModified());
 	}
@@ -42,5 +42,22 @@ public class UserDAO extends BaseDAO<User> implements IUserDAO {
 		sql.append(" FROM tbl_user WHERE id = ?");
 		List<User> users = find(sql.toString(), new UserMapper(), user.getId());
 		return (users.size() > 0) ? users.get(0) : null;
+	}
+
+	@Override
+	public boolean deleteUser(User user) {
+		StringBuilder sql = new StringBuilder("DELETE FROM tbl_user WHERE id = ?");
+		return update(sql.toString(), user.getId());
+	}
+
+	@Override
+	public boolean updateUser(User user) {
+		StringBuilder sql = new StringBuilder("UPDATE tbl_user");
+		sql.append(" SET username=?, password=?, salt=?, email=?, isAdmin=?,");
+		sql.append(" status=?, created_date=?, last_modified=?");
+		sql.append(" WHERE id=?");
+		return update(sql.toString(), user.getUsername(), user.getPassword(), user.getSalt(),
+				user.getEmail(), user.getStatus(), user.getCreatedDate(), user.getLastModified(),
+				user.getId());
 	}
 }

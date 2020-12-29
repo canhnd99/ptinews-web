@@ -9,7 +9,7 @@ public interface IArticleService {
 	Article findOne(Article article);
 	List<Article> search(Article article);
 	List<Article> findByEvent();
-	boolean addNewArticle(Article article);
-	boolean deleteArticle(Article article);
-	boolean updateArticle(Article article, String encodedId);
+	boolean add(Article article);
+	boolean delete(Article article);
+	boolean update(Article article);
 }

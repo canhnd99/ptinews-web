@@ -6,20 +6,28 @@ public class Article extends Base<Article> {
 	private String description;
 	private String content;
 	private String thumnail;
-	private String slug;
+	private String status;
+	private String event;
+	private String sticky;
+	private int liked;
 	private User user;
 	private Category category;
+	private String tagName;
+	private String categoryName;
 	
 	public Article() {
 	}
 
 	public Article(String title, String description, String content, String thumnail,
-			String slug, User user, Category category) {
+			String status, String tag, String event, String sticky, int liked, User user, Category category) {
 		this.title = title;
 		this.description = description;
 		this.content = content;
 		this.thumnail = thumnail;
-		this.slug = slug;
+		this.status = status;
+		this.event = event;
+		this.sticky = sticky;
+		this.liked = liked;
 		this.user = user;
 		this.category = category;
 	}
@@ -56,12 +64,36 @@ public class Article extends Base<Article> {
 		this.thumnail = thumnail;
 	}
 
-	public String getSlug() {
-		return slug;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setSlug(String slug) {
-		this.slug = slug;
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getEvent() {
+		return event;
+	}
+
+	public void setEvent(String event) {
+		this.event = event;
+	}
+
+	public String getSticky() {
+		return sticky;
+	}
+
+	public void setSticky(String sticky) {
+		this.sticky = sticky;
+	}
+	
+	public int getLiked() {
+		return liked;
+	}
+
+	public void setLiked(int liked) {
+		this.liked = liked;
 	}
 
 	public User getUser() {
@@ -78,5 +110,21 @@ public class Article extends Base<Article> {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+	
+	public String getTagName() {
+		return tagName;
+	}
+
+	public void setTagName(String tagName) {
+		this.tagName = tagName;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 }

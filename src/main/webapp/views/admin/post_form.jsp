@@ -1,12 +1,14 @@
 <!-- HEAD -->
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -41,17 +43,13 @@
 					<h2 class="mb-2" align="center">Posts Form</h2>
 
 
-					<form action="<c:url value='/admin/articles'/>?action='create'" method="post">
+					<form action="<c:url value='/admin/articles'/>?action=create"
+						method="post">
 						<!-- NHỚ THÊM ENCRYPT = MULTIPART/FORM DATA -->
 
 						<div class="form-group">
 							<label>Title</label> <input class="form-control" value=""
 								type="text" name="title" />
-						</div>
-
-						<div class="form-group">
-							<label>Thumbnail</label> <input class="form-control" value=""
-								type="file" name="thumbnail" />
 						</div>
 
 						<div class="form-group">
@@ -62,35 +60,38 @@
 
 						<div class="form-group">
 							<label>Content</label>
-							<textarea rows="12" name="content" class="form-control"
-								id="content"></textarea>
+							<textarea rows="12" name="content" class="form-control" id="content"></textarea>
 						</div>
 
 						<div class="form-group">
-							<label>Category</label> <select class="form-control"
-								name="category">
-								<option>new</option>
-								<option>hot</option>
-								<option>trend</option>
-								<option>other</option>
+							<label>Thumbnail</label> <input class="form-control" value="" type="file" name="thumnail" />
+						</div>
+
+						<div class="form-group">
+							<label>Category</label> 
+							<select class="form-control" name="categoryName">
+								<c:forEach var="item" items="${categories}">
+									<option>${ item.name }</option>
+								</c:forEach>
 							</select>
 						</div>
 
 						<div class="form-group">
-							<label>Tag</label> <select class="form-control" name="tags">
-								<option>tag1</option>
-								<option>tag2</option>
-								<option>tag3</option>
+							<label>Tag</label> 
+							<select class="form-control" name="tagName">
+								<c:forEach var="item" items="${tags}">
+									<option>${ item.name }</option>
+								</c:forEach>
 							</select>
 						</div>
-
+						
 						<div class="form-check">
-							<input type="checkbox" class="form-check-input"> <label
+							<input type="checkbox" class="form-check-input" value="checked" name="event"> <label
 								class="form-check-label">Mark as event</label>
 						</div>
 
 						<div class="form-check">
-							<input type="checkbox" class="form-check-input"> <label
+							<input type="checkbox" class="form-check-input" value="checked" name="sticky"> <label
 								class="form-check-label">Mark as sticky</label>
 						</div>
 
@@ -105,11 +106,14 @@
 						</div>
 
 						<div class="form-group">
-							<input class="btn btn-primary" type="submit" value="Save" /> 
-							<input class="btn btn-success" type="button" value="Cancel" onclick="javascript:history.go(-1)" />
+							<input class="btn btn-primary" type="submit" value="Save" /> <input
+								class="btn btn-success" type="button" value="Cancel"
+								onclick="javascript:history.go(-1)" />
 						</div>
 
 					</form>
+
+
 
 				</div>
 

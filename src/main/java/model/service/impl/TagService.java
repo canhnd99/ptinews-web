@@ -1,18 +1,23 @@
 package model.service.impl;
 
+import java.sql.Date;
 import java.util.List;
+import java.util.UUID;
 
+import dao.ITagDAO;
 import dao.impl.TagDAO;
 import model.Tag;
-import model.mapper.impl.TagMapper;
 import model.service.ITagService;
+import model.service.IUserService;
 
 public class TagService implements ITagService {
 	
-	private static TagDAO tagDAO;
+	ITagDAO tagDAO;
+	IUserService userService;
 	
 	public TagService(){
 		tagDAO = new TagDAO();
+		userService = new UserService();
 	}
 
 	@Override
@@ -22,11 +27,19 @@ public class TagService implements ITagService {
 	}
 
 	@Override
-	public void insertTag(Tag tag) {
-		StringBuilder sql = new StringBuilder("INSERT INTO tbl_tag");
-		sql.append(" (id, name, created_date, last_modified, tbl_user_id) ");
-		sql.append(" VALUES (?, ?, ?, ?, ?)");
-		tagDAO.insert(sql.toString(), tag.getId(), tag.getName(), tag.getCreatedDate(), tag.getLastModified(), tag.getUser_id());
+	public boolean insertTag(Tag tag) {
+		if(tag != null) {
+			if(tag.getUser() != null && tag.getName() != null
+					&& !tag.getName().isEmpty()) {
+				tag.setId(UUID.randomUUID().toString());
+				tag.setStatus(1);
+				tag.setCreatedDate(new Date(System.currentTimeMillis()));
+				tag.setLastModified(new Date(System.currentTimeMillis()));
+				tag.setUser(tag.getUser());
+				return (tagDAO.save(tag) == 1) ? true : false;
+			}
+		}
+		return false;
 	}
 
 	@Override
@@ -49,6 +62,4 @@ public class TagService implements ITagService {
 	public boolean deleteTagById(String id) {
 		return tagDAO.deleteTagById(id);
 	}
-
-
 }

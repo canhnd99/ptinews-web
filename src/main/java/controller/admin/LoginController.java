@@ -13,6 +13,7 @@ import model.User;
 import model.service.IUserService;
 import model.service.impl.UserService;
 import utils.FormUtil;
+import utils.SessionUtil;
 
 /*
  * admin account:
@@ -43,7 +44,8 @@ public class LoginController extends HttpServlet {
 		user = userService.checkLogin(user);
 		if (user != null) {
 			if (user.getIsAdmin() == true) {
-				req.getSession().setAttribute("admin", user);
+				SessionUtil.getInstance().putValue(req, "ADMIN", user);
+				req.setAttribute("admin", user);
 				RequestDispatcher rd = req.getRequestDispatcher("/views/admin/index.jsp");
 				rd.forward(req, resp);
 			}
@@ -56,8 +58,6 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/login.jsp");
-		System.out.println("doget Login called");
 		rd.forward(req, resp);
 	}
-
 }

@@ -28,9 +28,9 @@ public class CategoryDAO extends BaseDAO<Category> implements ICategoryDAO{
 	}
 
 	@Override
-	public Category findCategoryById(String id) {
+	public Category findCategoryById(Category cat) {
 		StringBuilder sql = new StringBuilder("SELECT * FROM tbl_category WHERE id = ?");
-		return find(sql.toString(), new CategoryMapper(), id).get(0);
+		return find(sql.toString(), new CategoryMapper(), cat.getId()).get(0);
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class CategoryDAO extends BaseDAO<Category> implements ICategoryDAO{
 		
 		List<Category> categories = new ArrayList<>();
 		StringBuilder sql = new StringBuilder("SELECT * FROM tbl_category");
-		categories = find(sql.toString(),  new CategoryMapper(), "");
+		categories = find(sql.toString(),  new CategoryMapper());
 		
 		return categories;
 	}
@@ -55,10 +55,10 @@ public class CategoryDAO extends BaseDAO<Category> implements ICategoryDAO{
 	}
 
 	@Override
-	public boolean deleteCategoryById(String id) {
+	public boolean deleteCategoryById(Category cat) {
 		//DELETE FROM tbl_category WHERE (id = d355c3dd-cb2f-46e1-a433-64320840ff0e);
 		StringBuilder sql = new StringBuilder("DELETE FROM tbl_category WHERE id = ?");
-		int rs = insert(sql.toString(), id);
+		int rs = insert(sql.toString(), cat.getId());
 		return rs > 0;
 	}
 	

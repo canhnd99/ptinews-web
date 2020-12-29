@@ -1,1 +1,5 @@
-/target
+1. load tag name to cbox (article_form): ok
+2. add category: ok
+3. load category to cbox (article_form): 
+4. save article and tbl_article_tag
+5. save and update user
