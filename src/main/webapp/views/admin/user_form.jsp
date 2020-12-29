@@ -7,17 +7,18 @@
 <head>
 
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>
-	<c:if test="${u != null }"> Edit user </c:if> 
-	<c:if test="${u == null }"> New user </c:if>
-</title>
+<title><c:if test="${u != null }"> Edit user </c:if> <c:if
+		test="${u == null }"> New user </c:if></title>
 
-<link href="<c:url value='/static/css/style-admin.css'/>" rel="stylesheet">
-<link href="<c:url value='/static/css/simple-sidebar-admin.css'/>" rel="stylesheet">
+<link href="<c:url value='/static/css/style-admin.css'/>"
+	rel="stylesheet">
+<link href="<c:url value='/static/css/simple-sidebar-admin.css'/>"
+	rel="stylesheet">
 <style>
 label {
 	display: inline-block;
@@ -71,7 +72,7 @@ label {
 					<c:if test="${u != null }">
 						<h2 class="mb-2" align="center">Edit user</h2>
 
-						<form action="update-user" method="post"
+						<form action="<c:url value='/admin/users'/>?action=update" method="post"
 							onsubmit="return validateEditFormInput();">
 
 							<input type="hidden" name="id" value="${u.id }" /> <input
@@ -80,15 +81,15 @@ label {
 
 					<c:if test="${u == null }">
 						<h2 class="mb-2" align="center">New user</h2>
-						<form action="create-user" method="post">
+						<form action="<c:url value='/admin/users'/>?action=create" method="post">
 					</c:if>
 
 					<div class="form-group">
 						<label>Username</label> <input type="text" class="form-control"
 							value="${u.username }"
 							<c:if test="${u == null }"> name="username" id="username"</c:if>
-							<c:if test="${u != null }"> disabled </c:if> />
-						<small><i>Can not be change</i></small>
+							<c:if test="${u != null }"> disabled </c:if> /> <small><i>Can
+								not be change</i></small>
 					</div>
 
 					<div class="form-group">
@@ -101,42 +102,11 @@ label {
 
 					<div class="form-group">
 						<label>Password</label> <input class="form-control" value=""
-							name="newpassword" id="newpassword" type="password"
+							name="password" id="newpassword" type="password"
 							placeholder="Enter your new password"
 							<c:if test="${u == null }">  </c:if> /> <small><i>Password
 								is require least 7 to 15 characters which contain at least one
 								numeric digit and a special character</i></small>
-					</div>
-
-					<div class="form-group">
-						<label>Retype password</label> <input class="form-control"
-							value="" name="repassword" id="repassword" type="password" />
-					</div>
-
-					<div class="form-group">
-						<label>Fullname</label> <input class="form-control"
-							value="${u.fullname }" type="text" name="fullname" />
-					</div>
-
-					<div class="form-group">
-						<label>Status</label> <select class="form-control" name="status">
-							<option <c:if test="${u.status == 'active' }"> selected </c:if>
-								value="active">active</option>
-							<option <c:if test="${u.status == 'block' }"> selected </c:if>
-								value="block">block</option>
-						</select>
-					</div>
-
-					<div class="form-group">
-
-						<label>Role</label> <select class="form-control" name="role">
-							<option
-								<c:if test="${u.role == 'user' || u == null }"> selected </c:if>
-								value="user">user</option>
-							<option <c:if test="${u.role == 'admin' }"> selected </c:if>
-								value="admin">admin</option>
-						</select>
-
 					</div>
 
 					<c:if test="${ u != null }">

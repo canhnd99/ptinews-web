@@ -21,7 +21,7 @@ import utils.FormUtil;
 @WebServlet(urlPatterns = { "/admin/categories", "/admin/create-category", "/admin/update-category" })
 public class CategoryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	private static CategoryService categoryService;
 	private IUserService userService;
 
@@ -35,12 +35,14 @@ public class CategoryController extends HttpServlet {
 		String action = req.getParameter("action");
 		String categoryId = req.getParameter("categoryId");
 
+		Category cat = new Category();
+		cat.setId(categoryId);
+
 		if (action != null && action.equalsIgnoreCase("create")) {
 			req.setAttribute("action", action);
 			showFormCategory(req, resp);
 		} else if (action != null && action.equalsIgnoreCase("edit") && categoryId != null) {
-
-			Category cat = categoryService.findCategoryById(categoryId);
+			cat = categoryService.findCategoryById(cat);
 			if (cat != null) {
 				req.setAttribute("action", action);
 				req.setAttribute("cat", cat);
@@ -50,22 +52,22 @@ public class CategoryController extends HttpServlet {
 				showListCategory(req, resp);
 			}
 		} else if (action.equalsIgnoreCase("delete") && categoryId != null) {
-			Category category = categoryService.findCategoryById(categoryId);
-			if (category != null) {
-				boolean deleted = categoryService.deleteCategoryById(categoryId);
+			cat = categoryService.findCategoryById(cat);
+			if (cat != null) {
+				boolean deleted = categoryService.deleteCategoryById(cat);
 
 				if (deleted)
-					req.setAttribute("success_message", "Category <b>" + category.getName() + "</b> has been deleted!");
+					req.setAttribute("success_message", "Category <b>" + cat.getName() + "</b> has been deleted!");
 				else
 					req.setAttribute("err_message",
 							"Some error happend when delete category. Please check and try again!");
-			} else
+			} else {
 				req.setAttribute("err_message", "Category with ID = " + categoryId + " not found.");
-
+			}
 			showListCategory(req, resp);
-		} else
+		} else {
 			showListCategory(req, resp);
-
+		}
 	}
 
 	@Override
@@ -74,7 +76,7 @@ public class CategoryController extends HttpServlet {
 		String action = req.getParameter("action");
 
 		Category cat = FormUtil.toModel(Category.class, req);
-		User loggedUser = (User) req.getSession().getAttribute("admin");
+		User loggedUser = (User) req.getSession().getAttribute("ADMIN");
 
 		boolean check = (cat != null && loggedUser != null && action != null);
 
@@ -89,15 +91,14 @@ public class CategoryController extends HttpServlet {
 			} else {
 				User user = new User();
 				user.setId(loggedUser.getId());
-				cat.setUser(userService.findOneById(user)); // set user_id
+				cat.setUser(userService.findOneById(user));
 				categoryService.insertCategory(cat);
 				req.setAttribute("success_message", "Category <b>" + cat.getName() + " </b> has been created!");
 			}
-
 		} else if (action.equalsIgnoreCase("update") && check && cat.getId() != null) {
-			// insert code to update here
-			Category catExisted = categoryService.findCategoryById(cat.getId());
-
+			
+			Category catExisted = categoryService.findCategoryById(cat);
+			
 			if (catExisted != null) {
 				cat.setLastModified(new Date(System.currentTimeMillis()));
 				boolean updated = categoryService.updateCategory(cat);
@@ -124,15 +125,11 @@ public class CategoryController extends HttpServlet {
 		req.setAttribute("categories", categories);
 		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/category_list.jsp");
 		rd.forward(req, resp);
-
 	}
 
 	public void showFormCategory(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-
 		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/category_form.jsp");
 		rd.forward(req, resp);
-
 	}
-
 }

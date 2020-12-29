@@ -38,7 +38,7 @@ public class SignupController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		User user = FormUtil.toModel(User.class, req);
 		if(user != null) {
-			userService.addUser(user);
+			userService.add(user);
 		}
 	}
 }

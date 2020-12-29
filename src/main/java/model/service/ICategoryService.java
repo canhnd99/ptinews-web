@@ -6,9 +6,16 @@ import model.Category;
 
 public interface ICategoryService {
 	boolean checkExisted(String name);
+
 	void insertCategory(Category cat);
-	Category findCategoryById(String id);
+
+	Category findCategoryById(Category cat);
+	
+	Category findCategoryByName(Category cat);
+
 	boolean updateCategory(Category cat);
+
 	List<Category> listCategory();
-	boolean deleteCategoryById(String id);
+
+	boolean deleteCategoryById(Category cat);
 }

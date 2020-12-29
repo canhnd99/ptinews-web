@@ -14,7 +14,7 @@ public class CommentMapper implements RowMapper<Comment> {
 		try {
 			comment.setId(rs.getString("id"));
 			comment.setContent(rs.getString("content"));
-			comment.setStatus(rs.getBoolean("status"));
+			comment.setStatus(rs.getString("status"));
 			comment.setCreatedDate(rs.getDate("created_date"));
 			comment.setLastModified(rs.getDate("last_modified"));
 			return comment;

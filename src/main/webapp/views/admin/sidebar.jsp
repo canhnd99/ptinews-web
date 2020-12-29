@@ -26,7 +26,7 @@
 		<div class="list-group-item list-group-item-action bg-light nav-item ">
 			<b>User</b>
 			<div class="mt-2">
-				<a href="<c:url value='/admin/users'/>?action=edit" class="border-bottom p-10 block list-group-item-action"> New user</a> 
+				<a href="<c:url value='/admin/users'/>?action=create" class="border-bottom p-10 block list-group-item-action"> New user</a> 
 				<a href="<c:url value='/admin/users'/>" class="p-10 block list-group-item-action"> List users </a>
 			</div>
 		</div>

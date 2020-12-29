@@ -6,49 +6,74 @@
 <meta charset="UTF-8">
 <title>Trang Chủ - Ptinews</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href='<c:url value="static/css/style.css"/>'>
-<link rel="stylesheet" href='<c:url value="static/css/font-awesome.min.css"/>'>
-<link rel="stylesheet" href='<c:url value="static/css/icomoon.css"/>'>
-<link rel="stylesheet" href='<c:url value="static/css/poppin.css"/>'>
-<link rel="stylesheet" href='<c:url value="static/css/themify-icons.css"/>'>
-<link rel="stylesheet" href='<c:url value="static/css/flaticon.css"/>'>
+<link rel="stylesheet" type="text/css" href="static/css/web/style.css">
+<link rel="stylesheet" type="text/css" href="static/css/web/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="static/css/web/icomoon.css">
+<link rel="stylesheet" type="text/css" href="static/css/web/poppin.css">
+<link rel="stylesheet" type="text/css" href="static/css/web/themify-icons.css">
 </head>
 <body>
 	<div class="container">
         <div id="header">
             <div class="header-content">
                 <div class="header-top">
-                    <a href="<c:url value='/trang-chu'/>">
+                    <a href="">
                         <img src="./static/image/logo.png" alt="logo">
+
                     </a>
                     <div class="right">
-                    <c:if test="${loggedUser==null}">
                         <button type="submit" id="loginBtn" class="btn-login">Đăng nhập</button>
-                        <a href="<c:url value='/dang-ky'/>" class="btn-sigup">Đăng ký</a>
-                     </c:if> 
-                     
-                     <c:if test="${loggedUser!=null}">
-                     	<span> Hello, ${loggedUser.username}</span>
-                     </c:if>   
-                     
+                        <!-- <a href="" class="btn-login" id="loginBtn">Đăng nhập</a> -->
+                        <a href="" class="btn-sigup">Đăng ký</a>
                         <div class="header-search">
                             <input type="text" placeholder="Tìm kiếm tin tức">
                             <span class="ti-search"></span>
                         </div>
-                        <div style="display: flex; flex-direction: row; margin-top: 60px">
-                        <c:if test="${loggedUser!=null}">
-                        	<h4>Login as: <c:out value="${ loggedUser.username }"/> </h4>
-                        	<a style="margin-left: 30px" href="<c:url value='/dang-xuat'/>">Đăng Xuất</a>
-                        </c:if>
-                        	
+                    </div>
+
+
+                    <div id="menuToggle">
+                        <input type="checkbox" />
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                        <div id="menu">
+                            <input type="text" value="Tìm kiếm..."><br><br>
+                            <ul>
+                                <li><a href="">Kinh tế</a></li>
+                                <li><a href="">Chính trị</a></li>
+                                <li><a href="">Văn hóa</a></li>
+                                <li><a href="">Nghệ thuật</a></li>
+                                <li><a href="">Giải trí</a></li>
+                                <li><a href="">Sức khỏe</a></li>
+                                <li><a href="">Video</a></li>
+                                <li><a href="">Blog</a></li>
+
+                            </ul>
+                            <ul>
+                                <li><a href="">Thể thao</a></li>
+                                <li><a href="">Giáo dục</a></li>
+                                <li><a href="">Thế giới</a></li>
+                                <li><a href="">Showbit</a></li>
+                                <li><a href="">Covid19</a></li>
+                                <li><a href="">Khoa học-Công nghệ</a></li>
+                                <li><a href="">Đời sống</a></li>
+                                <li><a href="">Du học</a></li>
+
+                            </ul>
+                            <img src="./static/image/logo.png" alt="logo">
+
                         </div>
+
+
                     </div>
                 </div>
                 <div class="header-menu">
                     <ul>
-                        <li><a href="<c:url value='/trang-chu'/>">Trang chủ</a></li>
+                        <li><a href="">Trang chủ</a></li>
                         <li class="drop">
-                        	<a class="dropbtn" href="<c:url value='/kinh-doanh'/>">Kinh Doanh</a>
+                            <a class="dropbtn" href="">Kinh tế</a>
                             <div class="dropdown-content">
                                 <a href="#">Tài chính đầu tư</a>
                                 <a href="#">Thị trường</a>
@@ -128,14 +153,42 @@
                                 <a href="#">Tuyển sinh</a>
                             </div>
                         </li>
+                        <li class="drop">
+                            <a class="dropbtn" href="">Covid19</a>
+                            <div class="dropdown-content">
+                                <a href="#">Thống kê</a>
+                                <a href="#">Tin tức</a>
+                            </div>
+                        </li>
+                        <li class="drop">
+                            <a class="dropbtn" href="">Việc làm</a>
+                            <div class="dropdown-content">
+                                <a href="#">Bán thời gian</a>
+                                <a href="#">Việc làm sinh viên</a>
+                            </div>
+                        </li>
+                        <li class="drop">
+                            <a class="dropbtn" href="">Số hóa</a>
+                            <div class="dropdown-content">
+                                <a href="#">Tin tức</a>
+                                <a href="#">Sản phẩm</a>
+                            </div>
+                        </li>
+                        <li class="drop">
+                            <a class="dropbtn" href="">Tin hot</a>
+                            <div class="dropdown-content">
+                                <a href="#">Showbit</a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
+
             </div>
         </div>
         <div id="content">
             <div class="banner">
                 <img src="./static/image/unnamed.png" alt="img">
-                <!-- <img src="./static/image/unnamed.png" alt="img"> -->
+                <img src="./static/image/unnamed.png" alt="img">
             </div>
             <div class="content-content">
                 <div class="content-left">
@@ -144,17 +197,17 @@
                             <p>Mới nhất</p>
                         </div>
                         <div class="new-content">
-                            <a href="<c:url value='/bai-viet'/>">
+                            <a href="">
                                 <div class="new-content-f1">
                                     <div class="f1-title">
-                                        <h2>Đỗ Thị Hà đăng quang Hoa hậu Việt Nam 2020</h2>
+                                        <h2> Mỹ nhân "Running Man" Song Ji Hyo trẻ đẹp ấn tượng trong phim mới</h2>
                                     </div>
                                     <div class="f1-content">
                                         <div class="f1-content-img">
-                                        	<img src="./static/image/hoa-hau.jpg" alt="hoa hau Viet Nam" />
+                                            <img src="./static/image/ji.jpg" alt="jiji">
                                         </div>
                                         <div class="f1-content-description">
-                                            Vượt qua 34 thí sinh trong đêm chung kết, Đỗ Thị Hà đã được xướng tên ở ngôi vị cao nhất. Kết quả này không nằm ngoài dự đoán của giới chuyên môn...	
+                                            Những hình ảnh trong buổi chụp quảng cáo cho bộ phim mới “Did We Love?” của Song Ji Hyo đã được hé lộ. Gần 40 tuổi, mỹ nhân của “Running Man” vẫn trẻ trung đến kinh ngạc.
                                         </div>
                                     </div>
                                 </div>
@@ -164,20 +217,20 @@
                                 <div class="new-slide">
                                     <a href="">
                                         <div class="slide-img">
-                                            <img src="./static/image/hoa-hau-2.jpg" alt="Hoa hau Viet Nam">
+                                            <img src="./static/image/trump.jpg" alt="">
                                         </div>
                                         <div class="slide-content">
-                                            <b>Nhan sắc đời thường của Hoa hậu Việt Nam 2020 Đỗ Thị Hà</b>
+                                            <b>Mỹ tái thảo luận kế hoạch cắt quốc tịch cho trẻ sơ sinh nước ngoài</b>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="new-slide">
                                     <a href="">
                                         <div class="slide-img">
-                                            <img src="./static/image/cong-nghe.jpg" alt="">
+                                            <img src="./static/image/trump.jpg" alt="">
                                         </div>
                                         <div class="slide-content">
-                                            <b>Diễn đàn doanh nghiệp công nghệ số diễn ra giữa tháng 12</b>
+                                            <b>Mỹ tái thảo luận kế hoạch cắt quốc tịch cho trẻ sơ sinh nước ngoài</b>
                                         </div>
                                     </a>
                                 </div>
@@ -198,328 +251,383 @@
                     <div class="new-category">
                         <div class="cate-col">
                             <div class="cate-col-row">
-                                <!-- menu -->
-                                <div class="cate-row-menu">
-                                    <ul>
-                                        <li class="menu-f1"><a href="">Kinh doanh</a></li>
-                                        <li><a href="">Tài chính</a></li>
-                                        <li><a href="">Bất động sản</a></li>
-                                        <li><a href="">Tiền tệ</a></li>
-                                    </ul>
-                                </div>
-                                <!-- bài mới nhất cate -->
-                                <div class="cate-row-content">
-                                    <a href="">
-                                        <div class="cate-1">
-                                            <h4>Đại gia tuần qua: Bắt tay Singapore, bầu Hiển bước vào “sân chơi” hàng nghìn tỷ</h4>
-                                        </div>
-                                        <div class="cate-2">
-                                            <div class="cate-2-img">
-                                                <img src="./static/image/cate.jpg" alt="">
+                                <div class="cell">
+                                    <!-- menu -->
+                                    <div class="cate-row-menu">
+                                        <ul>
+                                            <li class="menu-f1"><a href="">Kinh doanh</a></li>
+                                            <li><a href="">Tài chính</a></li>
+                                            <li><a href="">Bất động sản</a></li>
+                                            <li><a href="">Tiền tệ</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- bài mới nhất cate -->
+                                    <div class="cate-row-content">
+                                        <a href="">
+                                            <div class="cate-1">
+                                                <h4>Đại gia tuần qua: Bắt tay Singapore, bầu Hiển bước vào “sân chơi” hàng nghìn tỷ</h4>
                                             </div>
-                                            <div class="cate-2-des">
-                                                Tập đoàn của bầu Hiển vừa hợp tác đầu tư với tập đoàn lớn tại Singgapore xây dựng dự án logistics.
+                                            <div class="cate-2">
+                                                <div class="cate-2-img">
+                                                    <img src="./static/image/cate.jpg" alt="">
+                                                </div>
+                                                <div class="cate-2-des">
+                                                    Tập đoàn của bầu Hiển vừa hợp tác đầu tư với tập đoàn lớn tại Singgapore xây dựng dự án logistics.
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- danh sách các bài mới tiếp theo của cate -->
-                                <div class="cate-row-list">
-                                    <ul>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
-                                    </ul>
+                                        </a>
+                                    </div>
+                                    <!-- danh sách các bài mới tiếp theo của cate -->
+                                    <div class="cate-row-list">
+                                        <ul>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="cate-col-row">
-                                <!-- menu -->
-                                <div class="cate-row-menu">
-                                    <ul>
-                                        <li class="menu-f1"><a href="">Pháp luật</a></li>
-                                        <li><a href="">Vụ án nổi tiếng</a></li>
-                                        <li><a href="">Trọng án</a></li>
-                                        <li><a href="">Kỳ án</a></li>
-                                    </ul>
-                                </div>
-                                <!-- bài mới nhất cate -->
-                                <div class="cate-row-content">
-                                    <a href="">
-                                        <div class="cate-1">
-                                            <h4>Đại gia tuần qua: Bắt tay Singapore, bầu Hiển bước vào “sân chơi” hàng nghìn tỷ</h4>
-                                        </div>
-                                        <div class="cate-2">
-                                            <div class="cate-2-img">
-                                                <img src="./static/image/cate.jpg" alt="">
+                                <div class="cell">
+                                    <!-- menu -->
+                                    <div class="cate-row-menu">
+                                        <ul>
+                                            <li class="menu-f1"><a href="">Pháp luật</a></li>
+                                            <li><a href="">Vụ án nổi tiếng</a></li>
+                                            <li><a href="">Trọng án</a></li>
+                                            <li><a href="">Kỳ án</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- bài mới nhất cate -->
+                                    <div class="cate-row-content">
+                                        <a href="">
+                                            <div class="cate-1">
+                                                <h4>Đại gia tuần qua: Bắt tay Singapore, bầu Hiển bước vào “sân chơi” hàng nghìn tỷ</h4>
                                             </div>
-                                            <div class="cate-2-des">
-                                                Tập đoàn của bầu Hiển vừa hợp tác đầu tư với tập đoàn lớn tại Singgapore xây dựng dự án logistics.
+                                            <div class="cate-2">
+                                                <div class="cate-2-img">
+                                                    <img src="./static/image/cate.jpg" alt="">
+                                                </div>
+                                                <div class="cate-2-des">
+                                                    Tập đoàn của bầu Hiển vừa hợp tác đầu tư với tập đoàn lớn tại Singgapore xây dựng dự án logistics.
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- danh sách các bài mới tiếp theo của cate -->
-                                <div class="cate-row-list">
-                                    <ul>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
-                                    </ul>
+                                        </a>
+                                    </div>
+                                    <!-- danh sách các bài mới tiếp theo của cate -->
+                                    <div class="cate-row-list">
+                                        <ul>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="cate-col-row">
-                                <!-- menu -->
-                                <div class="cate-row-menu">
-                                    <ul>
-                                        <li class="menu-f1"><a href="">Chính trị</a></li>
-                                        <li><a href="">Nổi bật</a></li>
-                                        <li><a href="">Trong nước</a></li>
-                                        <li><a href="">Quốc tế</a></li>
-                                    </ul>
-                                </div>
-                                <!-- bài mới nhất cate -->
-                                <div class="cate-row-content">
-                                    <a href="">
-                                        <div class="cate-1">
-                                            <h4>Đại gia tuần qua: Bắt tay Singapore, bầu Hiển bước vào “sân chơi” hàng nghìn tỷ</h4>
-                                        </div>
-                                        <div class="cate-2">
-                                            <div class="cate-2-img">
-                                                <img src="./static/image/cate.jpg" alt="">
+                                <div class="cell">
+                                    <!-- menu -->
+                                    <div class="cate-row-menu">
+                                        <ul>
+                                            <li class="menu-f1"><a href="">Chính trị</a></li>
+                                            <li><a href="">Nổi bật</a></li>
+                                            <li><a href="">Trong nước</a></li>
+                                            <li><a href="">Quốc tế</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- bài mới nhất cate -->
+                                    <div class="cate-row-content">
+                                        <a href="">
+                                            <div class="cate-1">
+                                                <h4>Đại gia tuần qua: Bắt tay Singapore, bầu Hiển bước vào “sân chơi” hàng nghìn tỷ</h4>
                                             </div>
-                                            <div class="cate-2-des">
-                                                Tập đoàn của bầu Hiển vừa hợp tác đầu tư với tập đoàn lớn tại Singgapore xây dựng dự án logistics.
+                                            <div class="cate-2">
+                                                <div class="cate-2-img">
+                                                    <img src="./static/image/cate.jpg" alt="">
+                                                </div>
+                                                <div class="cate-2-des">
+                                                    Tập đoàn của bầu Hiển vừa hợp tác đầu tư với tập đoàn lớn tại Singgapore xây dựng dự án logistics.
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- danh sách các bài mới tiếp theo của cate -->
-                                <div class="cate-row-list">
-                                    <ul>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
-                                    </ul>
+                                        </a>
+                                    </div>
+                                    <!-- danh sách các bài mới tiếp theo của cate -->
+                                    <div class="cate-row-list">
+                                        <ul>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="cate-col-row">
-                                <!-- menu -->
-                                <div class="cate-row-menu">
-                                    <ul>
-                                        <li class="menu-f1"><a href="">Xã hội</a></li>
-                                        <li><a href="">Môi trường</a></li>
-                                        <li><a href="">Giao thông</a></li>
-                                        <li><a href="">Đời sống</a></li>
-                                    </ul>
-                                </div>
-                                <!-- bài mới nhất cate -->
-                                <div class="cate-row-content">
-                                    <a href="">
-                                        <div class="cate-1">
-                                            <h4>Đại gia tuần qua: Bắt tay Singapore, bầu Hiển bước vào “sân chơi” hàng nghìn tỷ</h4>
-                                        </div>
-                                        <div class="cate-2">
-                                            <div class="cate-2-img">
-                                                <img src="./static/image/cate.jpg" alt="">
+                                <div class="cell">
+                                    <!-- menu -->
+                                    <div class="cate-row-menu">
+                                        <ul>
+                                            <li class="menu-f1"><a href="">Xã hội</a></li>
+                                            <li><a href="">Môi trường</a></li>
+                                            <li><a href="">Giao thông</a></li>
+                                            <li><a href="">Đời sống</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- bài mới nhất cate -->
+                                    <div class="cate-row-content">
+                                        <a href="">
+                                            <div class="cate-1">
+                                                <h4>Đại gia tuần qua: Bắt tay Singapore, bầu Hiển bước vào “sân chơi” hàng nghìn tỷ</h4>
                                             </div>
-                                            <div class="cate-2-des">
-                                                Tập đoàn của bầu Hiển vừa hợp tác đầu tư với tập đoàn lớn tại Singgapore xây dựng dự án logistics.
+                                            <div class="cate-2">
+                                                <div class="cate-2-img">
+                                                    <img src="./static/image/cate.jpg" alt="">
+                                                </div>
+                                                <div class="cate-2-des">
+                                                    Tập đoàn của bầu Hiển vừa hợp tác đầu tư với tập đoàn lớn tại Singgapore xây dựng dự án logistics.
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- danh sách các bài mới tiếp theo của cate -->
-                                <div class="cate-row-list">
-                                    <ul>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
-                                    </ul>
+                                        </a>
+                                    </div>
+                                    <!-- danh sách các bài mới tiếp theo của cate -->
+                                    <div class="cate-row-list">
+                                        <ul>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="cate-col-row">
-                                <!-- menu -->
-                                <div class="cate-row-menu">
-                                    <ul>
-                                        <li class="menu-f1"><a href="">Thể thao</a></li>
-                                        <li><a href="">Bóng đá châu Á</a></li>
-                                        <li><a href="">Bóng đá châu Âu</a></li>
-                                        <li><a href="">Khác</a></li>
-                                    </ul>
-                                </div>
-                                <!-- bài mới nhất cate -->
-                                <div class="cate-row-content">
-                                    <a href="">
-                                        <div class="cate-1">
-                                            <h4>Đại gia tuần qua: Bắt tay Singapore, bầu Hiển bước vào “sân chơi” hàng nghìn tỷ</h4>
-                                        </div>
-                                        <div class="cate-2">
-                                            <div class="cate-2-img">
-                                                <img src="./static/image/cate.jpg" alt="">
+                                <div class="cell">
+                                    <!-- menu -->
+                                    <div class="cate-row-menu">
+                                        <ul>
+                                            <li class="menu-f1"><a href="">Thể thao</a></li>
+                                            <li><a href="">Bóng đá châu Á</a></li>
+                                            <li><a href="">Bóng đá châu Âu</a></li>
+                                            <li><a href="">Khác</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- bài mới nhất cate -->
+                                    <div class="cate-row-content">
+                                        <a href="">
+                                            <div class="cate-1">
+                                                <h4>Đại gia tuần qua: Bắt tay Singapore, bầu Hiển bước vào “sân chơi” hàng nghìn tỷ</h4>
                                             </div>
-                                            <div class="cate-2-des">
-                                                Tập đoàn của bầu Hiển vừa hợp tác đầu tư với tập đoàn lớn tại Singgapore xây dựng dự án logistics.
+                                            <div class="cate-2">
+                                                <div class="cate-2-img">
+                                                    <img src="./static/image/cate.jpg" alt="">
+                                                </div>
+                                                <div class="cate-2-des">
+                                                    Tập đoàn của bầu Hiển vừa hợp tác đầu tư với tập đoàn lớn tại Singgapore xây dựng dự án logistics.
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- danh sách các bài mới tiếp theo của cate -->
-                                <div class="cate-row-list">
-                                    <ul>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
-                                    </ul>
+                                        </a>
+                                    </div>
+                                    <!-- danh sách các bài mới tiếp theo của cate -->
+                                    <div class="cate-row-list">
+                                        <ul>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="cate-col">
                             <div class="cate-col-row">
-                                <!-- menu -->
-                                <div class="cate-row-menu">
-                                    <ul>
-                                        <li class="menu-f1"><a href="">Văn hóa</a></li>
-                                        <li><a href="">Du lịch</a></li>
-                                        <li><a href="">Ẩm thực</a></li>
-                                        <li><a href="">Sự kiện</a></li>
-                                    </ul>
-                                </div>
-                                <!-- bài mới nhất cate -->
-                                <div class="cate-row-content">
-                                    <a href="">
-                                        <div class="cate-1">
-                                            <h4>Đại gia tuần qua: Bắt tay Singapore, bầu Hiển bước vào “sân chơi” hàng nghìn tỷ</h4>
-                                        </div>
-                                        <div class="cate-2">
-                                            <div class="cate-2-img">
-                                                <img src="./static/image/cate.jpg" alt="">
+                                <div class="cell uncell">
+                                    <!-- menu -->
+                                    <div class="cate-row-menu">
+                                        <ul>
+                                            <li class="menu-f1"><a href="">Văn hóa</a></li>
+                                            <li><a href="">Du lịch</a></li>
+                                            <li><a href="">Ẩm thực</a></li>
+                                            <li><a href="">Sự kiện</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- bài mới nhất cate -->
+                                    <div class="cate-row-content">
+                                        <a href="">
+                                            <div class="cate-1">
+                                                <h4>Đại gia tuần qua: Bắt tay Singapore, bầu Hiển bước vào “sân chơi” hàng nghìn tỷ</h4>
                                             </div>
-                                            <div class="cate-2-des">
-                                                Tập đoàn của bầu Hiển vừa hợp tác đầu tư với tập đoàn lớn tại Singgapore xây dựng dự án logistics.
+                                            <div class="cate-2">
+                                                <div class="cate-2-img">
+                                                    <img src="./static/image/cate.jpg" alt="">
+                                                </div>
+                                                <div class="cate-2-des">
+                                                    Tập đoàn của bầu Hiển vừa hợp tác đầu tư với tập đoàn lớn tại Singgapore xây dựng dự án logistics.
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- danh sách các bài mới tiếp theo của cate -->
-                                <div class="cate-row-list">
-                                    <ul>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
-                                    </ul>
+                                        </a>
+                                    </div>
+                                    <!-- danh sách các bài mới tiếp theo của cate -->
+                                    <div class="cate-row-list">
+                                        <ul>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="cate-col-row">
-                                <!-- menu -->
-                                <div class="cate-row-menu">
-                                    <ul>
-                                        <li class="menu-f1"><a href="">Giải trí</a></li>
-                                        <li><a href="">Hài</a></li>
-                                        <li><a href="">Thời trang</a></li>
-                                        <li><a href="">Sao Việt</a></li>
-                                    </ul>
-                                </div>
-                                <!-- bài mới nhất cate -->
-                                <div class="cate-row-content">
-                                    <a href="">
-                                        <div class="cate-1">
-                                            <h4>Đại gia tuần qua: Bắt tay Singapore, bầu Hiển bước vào “sân chơi” hàng nghìn tỷ</h4>
-                                        </div>
-                                        <div class="cate-2">
-                                            <div class="cate-2-img">
-                                                <img src="./static/image/cate.jpg" alt="">
+                                <div class="cell uncell">
+                                    <!-- menu -->
+                                    <div class="cate-row-menu">
+                                        <ul>
+                                            <li class="menu-f1"><a href="">Giải trí</a></li>
+                                            <li><a href="">Hài</a></li>
+                                            <li><a href="">Thời trang</a></li>
+                                            <li><a href="">Sao Việt</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- bài mới nhất cate -->
+                                    <div class="cate-row-content">
+                                        <a href="">
+                                            <div class="cate-1">
+                                                <h4>Đại gia tuần qua: Bắt tay Singapore, bầu Hiển bước vào “sân chơi” hàng nghìn tỷ</h4>
                                             </div>
-                                            <div class="cate-2-des">
-                                                Tập đoàn của bầu Hiển vừa hợp tác đầu tư với tập đoàn lớn tại Singgapore xây dựng dự án logistics.
+                                            <div class="cate-2">
+                                                <div class="cate-2-img">
+                                                    <img src="./static/image/cate.jpg" alt="">
+                                                </div>
+                                                <div class="cate-2-des">
+                                                    Tập đoàn của bầu Hiển vừa hợp tác đầu tư với tập đoàn lớn tại Singgapore xây dựng dự án logistics.
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- danh sách các bài mới tiếp theo của cate -->
-                                <div class="cate-row-list">
-                                    <ul>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
-                                    </ul>
+                                        </a>
+                                    </div>
+                                    <!-- danh sách các bài mới tiếp theo của cate -->
+                                    <div class="cate-row-list">
+                                        <ul>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="cate-col-row">
-                                <!-- menu -->
-                                <div class="cate-row-menu">
-                                    <ul>
-                                        <li class="menu-f1"><a href="">Nghệ thuật</a></li>
-                                        <li><a href="">Ca nhạc</a></li>
-                                        <li><a href="">Phim-Điện ảnh</a></li>
-                                        <li><a href="">Kiến trúc</a></li>
-                                    </ul>
-                                </div>
-                                <!-- bài mới nhất cate -->
-                                <div class="cate-row-content">
-                                    <a href="">
-                                        <div class="cate-1">
-                                            <h4>Đại gia tuần qua: Bắt tay Singapore, bầu Hiển bước vào “sân chơi” hàng nghìn tỷ</h4>
-                                        </div>
-                                        <div class="cate-2">
-                                            <div class="cate-2-img">
-                                                <img src="./static/image/cate.jpg" alt="">
+                                <div class="cell uncell">
+                                    <!-- menu -->
+                                    <div class="cate-row-menu">
+                                        <ul>
+                                            <li class="menu-f1"><a href="">Nghệ thuật</a></li>
+                                            <li><a href="">Ca nhạc</a></li>
+                                            <li><a href="">Phim-Điện ảnh</a></li>
+                                            <li><a href="">Kiến trúc</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- bài mới nhất cate -->
+                                    <div class="cate-row-content">
+                                        <a href="">
+                                            <div class="cate-1">
+                                                <h4>Đại gia tuần qua: Bắt tay Singapore, bầu Hiển bước vào “sân chơi” hàng nghìn tỷ</h4>
                                             </div>
-                                            <div class="cate-2-des">
-                                                Tập đoàn của bầu Hiển vừa hợp tác đầu tư với tập đoàn lớn tại Singgapore xây dựng dự án logistics.
+                                            <div class="cate-2">
+                                                <div class="cate-2-img">
+                                                    <img src="./static/image/cate.jpg" alt="">
+                                                </div>
+                                                <div class="cate-2-des">
+                                                    Tập đoàn của bầu Hiển vừa hợp tác đầu tư với tập đoàn lớn tại Singgapore xây dựng dự án logistics.
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- danh sách các bài mới tiếp theo của cate -->
-                                <div class="cate-row-list">
-                                    <ul>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
-                                    </ul>
+                                        </a>
+                                    </div>
+                                    <!-- danh sách các bài mới tiếp theo của cate -->
+                                    <div class="cate-row-list">
+                                        <ul>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="cate-col-row">
-                                <!-- menu -->
-                                <div class="cate-row-menu">
-                                    <ul>
-                                        <li class="menu-f1"><a href="">Thế giới</a></li>
-                                        <li><a href="">Điểm nóng</a></li>
-                                        <li><a href="">Quân sự</a></li>
-                                    </ul>
-                                </div>
-                                <!-- bài mới nhất cate -->
-                                <div class="cate-row-content">
-                                    <a href="">
-                                        <div class="cate-1">
-                                            <h4>Đại gia tuần qua: Bắt tay Singapore, bầu Hiển bước vào “sân chơi” hàng nghìn tỷ</h4>
-                                        </div>
-                                        <div class="cate-2">
-                                            <div class="cate-2-img">
-                                                <img src="./static/image/cate.jpg" alt="">
+                                <div class="cell uncell">
+                                    <!-- menu -->
+                                    <div class="cate-row-menu">
+                                        <ul>
+                                            <li class="menu-f1"><a href="">Thế giới</a></li>
+                                            <li><a href="">Điểm nóng</a></li>
+                                            <li><a href="">Quân sự</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- bài mới nhất cate -->
+                                    <div class="cate-row-content">
+                                        <a href="">
+                                            <div class="cate-1">
+                                                <h4>Đại gia tuần qua: Bắt tay Singapore, bầu Hiển bước vào “sân chơi” hàng nghìn tỷ</h4>
                                             </div>
-                                            <div class="cate-2-des">
-                                                Tập đoàn của bầu Hiển vừa hợp tác đầu tư với tập đoàn lớn tại Singgapore xây dựng dự án logistics.
+                                            <div class="cate-2">
+                                                <div class="cate-2-img">
+                                                    <img src="./static/image/cate.jpg" alt="">
+                                                </div>
+                                                <div class="cate-2-des">
+                                                    Tập đoàn của bầu Hiển vừa hợp tác đầu tư với tập đoàn lớn tại Singgapore xây dựng dự án logistics.
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
+                                        </a>
+                                    </div>
+                                    <!-- danh sách các bài mới tiếp theo của cate -->
+                                    <div class="cate-row-list">
+                                        <ul>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <!-- danh sách các bài mới tiếp theo của cate -->
-                                <div class="cate-row-list">
-                                    <ul>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
-                                        <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
-                                    </ul>
+                            </div>
+                            <div class="cate-col-row">
+                                <div class="cell uncell">
+                                    <!-- menu -->
+                                    <div class="cate-row-menu">
+                                        <ul>
+                                            <li class="menu-f1"><a href="">Thế giới</a></li>
+                                            <li><a href="">Điểm nóng</a></li>
+                                            <li><a href="">Quân sự</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- bài mới nhất cate -->
+                                    <div class="cate-row-content">
+                                        <a href="">
+                                            <div class="cate-1">
+                                                <h4>Đại gia tuần qua: Bắt tay Singapore, bầu Hiển bước vào “sân chơi” hàng nghìn tỷ</h4>
+                                            </div>
+                                            <div class="cate-2">
+                                                <div class="cate-2-img">
+                                                    <img src="./static/image/cate.jpg" alt="">
+                                                </div>
+                                                <div class="cate-2-des">
+                                                    Tập đoàn của bầu Hiển vừa hợp tác đầu tư với tập đoàn lớn tại Singgapore xây dựng dự án logistics.
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <!-- danh sách các bài mới tiếp theo của cate -->
+                                    <div class="cate-row-list">
+                                        <ul>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                            <li><a href="">Phía sau vụ buôn lậu khủng hơn 50 kg vàng</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -611,20 +719,39 @@
                     </ul>
                 </div>
             </div>
+            <div class="menu-res" id="menu-res">
+                <div class="menu-res-col">
+                    <ul>
+                        <li><a href="">Kinh tế</a></li>
+                        <li><a href="">Chính trị</a></li>
+                        <li><a href="">Văn hóa</a></li>
+                        <li><a href="">Nghệ thuật</a></li>
+                        <li><a href="">Giải trí</a></li>
+                        <li><a href="">Sức khỏe</a></li>
+
+                    </ul>
+                </div>
+                <div class="menu-res-col">
+                    <ul>
+                        <li><a href="">Thể thao</a></li>
+                        <li><a href="">Giáo dục</a></li>
+                        <li><a href="">Thế giới</a></li>
+                        <li><a href="">Showbit</a></li>
+                        <li><a href="">Covid19</a></li>
+                    </ul>
+                </div>
+            </div>
             <div class="footer-infor">
                 <div class="f-img">
                     <img src="./static/image/logo.png" alt="">
                 </div>
                 <div class="f-des">
-                    Cơ quan chủ quản: Công ty Cổ phần Quảng cáo Trực tuyến 24H <br>
-                    Trụ sở: Tầng 12, Tòa nhà Geleximco, 36 Hoàng Cầu, Phường Ô Chợ Dừa, Quận Đống Đa, TP Hà Nội. <br>
-                    Tel: (84-24) 73 00 24 24 hoặc (84-24) 3512 1806 - Fax: (84-24) 3512 1804. <br>
-                    Chi nhánh: Tầng 7, Tòa nhà Việt Úc, 402 Nguyễn Thị Minh Khai, Phường 5, Quận 3, TP. Hồ Chí Minh. <br>
-                    Tel: (84-28) 7300 2424 / Giấy phép số 332/GP – TT ĐT ngày cấp 22/01/2018 SỞ THÔNG TIN VÀ TRUYỀN THÔNG HÀ NỘI. 
-                    <br>Chịu trách nhiệm xuất bản: Phan Minh Tâm. 
+                    Cơ quan chủ quản: Công ty Cổ phần Quảng cáo Trực tuyến 24H <br> Trụ sở: Tầng 12, Tòa nhà Geleximco, 36 Hoàng Cầu, Phường Ô Chợ Dừa, Quận Đống Đa, TP Hà Nội. <br> Tel: (84-24) 73 00 24 24 hoặc (84-24) 3512 1806 - Fax: (84-24) 3512 1804.
+                    <br> Chi nhánh: Tầng 7, Tòa nhà Việt Úc, 402 Nguyễn Thị Minh Khai, Phường 5, Quận 3, TP. Hồ Chí Minh. <br> Tel: (84-28) 7300 2424 / Giấy phép số 332/GP – TT ĐT ngày cấp 22/01/2018 SỞ THÔNG TIN VÀ TRUYỀN THÔNG HÀ NỘI.
+                    <br>Chịu trách nhiệm xuất bản: Phan Minh Tâm.
                     <br>HOTLINE: 0965 08 24 24
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -633,21 +760,21 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h3>Đăng nhập</h3>
-            <form action="<c:url value='/dang-nhap'/>" method="post" name="flogin">
+            <form action="#" name="flogin" method="post">
                 <div class="field">
                     <span class="fa fa-user" aria-hidden="true"></span>
-                    <input type="text" placeholder="Email" name="email" id="username" value="hieupq@gmail.com">
+                    <input type="text" placeholder="Tên đăng nhập" name="uname" id="username" required>
                 </div>
                 <div class="field space">
                     <span class="fa fa-lock" aria-hidden="true"></span>
-                    <input type="password" placeholder="Mật khẩu" name="password" id="pass" value="hieu12@">
+                    <input type="password" placeholder="Mật khẩu" name="pass" id="pass" required>
                 </div>
                 <div class="forget">
                     <a href="#">Quên mật khẩu?</a>
                 </div>
                 <div class="login">
                     <div class="sub">
-                        <input type="submit" value ="Đăng nhập" id="submit">
+                        <input type="submit" value="Đăng nhập" id="submit">
                     </div>
                 </div>
                 <div class="signup">

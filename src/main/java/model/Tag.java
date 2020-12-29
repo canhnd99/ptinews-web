@@ -3,13 +3,16 @@ package model;
 public class Tag extends Base<Tag> {
 
 	private String name;
-	private String user_id;
+	private int status;
+	private User user;
 
 	public Tag() {
 	}
 
-	public Tag(String name) {
+	public Tag(String name, int status, User user) {
 		this.name = name;
+		this.status = status;
+		this.user = user;
 	}
 
 	public String getName() {
@@ -18,21 +21,21 @@ public class Tag extends Base<Tag> {
 
 	public void setName(String name) {
 		this.name = name;
+	}	
+
+	public int getStatus() {
+		return status;
 	}
 
-	public String getUser_id() {
-		return user_id;
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public User getUser() {
+		return user;
 	}
 
-	@Override
-	public String toString() {
-		return "Tag [name=" + name + ", user_id=" + user_id + ", Id=" + getId() + ", createdDate="
-				+ getCreatedDate() + ", LastModified=" + getLastModified() + "]";
+	public void setUser(User user) {
+		this.user = user;
 	}
-	
-	
 }

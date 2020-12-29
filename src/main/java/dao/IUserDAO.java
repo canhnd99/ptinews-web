@@ -13,4 +13,8 @@ public interface IUserDAO {
 	User findOneByEmail(User user);
 
 	User findOneById(User user);
+	
+	boolean deleteUser(User user);
+	
+	boolean updateUser(User user);
 }

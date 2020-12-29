@@ -30,8 +30,8 @@ public class UserMapper implements RowMapper<User> {
 			if(rs.getBoolean("isAdmin")) {
 				user.setAdmin(rs.getBoolean("isAdmin"));
 			}
-			if(rs.getBoolean("status")) {
-				user.setStatus(rs.getBoolean("status"));
+			if(rs.getInt("status") != -1) {
+				user.setStatus(rs.getInt("status"));
 			}
 			if(rs.getDate("created_date") != null) {
 				user.setCreatedDate(rs.getDate("created_date"));
