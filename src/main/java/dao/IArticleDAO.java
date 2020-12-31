@@ -6,10 +6,10 @@ import model.Article;
 
 public interface IArticleDAO {
 	List<Article> findAll();
-	List<Article> findByTitle(Article article);
+	List<Article> findByTitle(String keyword);
 	Article findOne(Article article);
 	List<Article> findByEvent();
 	int save(Article article);
-	boolean deleteArticle(Article article);
+	boolean deleteArticle(String articleId);
 	boolean updateArticle(Article article);
 }

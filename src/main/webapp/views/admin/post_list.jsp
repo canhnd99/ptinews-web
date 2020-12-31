@@ -1,20 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
 <head>
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Posts management - Admin Dashboard</title>
-<link href="<c:url value='/static/css/style-admin.css'/>"
-	rel="stylesheet">
-<link href="<c:url value='/static/css/simple-sidebar-admin.css'/>"
-	rel="stylesheet">
+<link href="<c:url value='/static/css/style-admin.css'/>" rel="stylesheet">
+<link href="<c:url value='/static/css/simple-sidebar-admin.css'/>" rel="stylesheet">
 </head>
 
 <body>
@@ -41,7 +37,6 @@
 								<td>${ article.category.name }</td>
 								<td>${ article.user.username }</td>
 								<td>${ article.createdDate }</td>
-								
 								<td>
 									<a class="btn" href="?action=edit&id=${article.id }">Edit</a>
 									<button class="btn" onclick="confirmDelete('${article.id}')">Delete</button>
@@ -60,6 +55,11 @@
 			var element2 = document.getElementById("menu-target");
 			element1.classList.toggle("show");
 			element2.classList.toggle("show");
+		}
+		function confirmDelete(id) {
+			if (confirm('Xóa bài viết có ID là: ' + id + '?')) {
+				window.location.href = '?action=delete&articleId=' + id;
+			}
 		}
 	</script>
 </body>

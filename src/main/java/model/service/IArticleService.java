@@ -7,9 +7,9 @@ import model.Article;
 public interface IArticleService {
 	List<Article> findAll();
 	Article findOne(Article article);
-	List<Article> search(Article article);
+	List<Article> search(String keyword);
 	List<Article> findByEvent();
 	boolean add(Article article);
-	boolean delete(Article article);
+	boolean delete(String articleId);
 	boolean update(Article article);
 }

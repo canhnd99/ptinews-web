@@ -43,9 +43,7 @@
 					<h2 class="mb-2" align="center">Posts Form</h2>
 
 
-					<form action="<c:url value='/admin/articles'/>?action=create"
-						method="post">
-						<!-- NHỚ THÊM ENCRYPT = MULTIPART/FORM DATA -->
+					<form action="<c:url value='/admin/articles'/>?action=create" method="post" enctype="multipart/form-data">
 
 						<div class="form-group">
 							<label>Title</label> <input class="form-control" value=""
@@ -64,14 +62,15 @@
 						</div>
 
 						<div class="form-group">
-							<label>Thumbnail</label> <input class="form-control" value="" type="file" name="thumnail" />
+							<label>Thumbnail</label> 
+							<input class="form-control" value="" type="file" name="thumnail" />
 						</div>
 
 						<div class="form-group">
 							<label>Category</label> 
 							<select class="form-control" name="categoryName">
 								<c:forEach var="item" items="${categories}">
-									<option>${ item.name }</option>
+									<option value="${ item.id }">${ item.name }</option>
 								</c:forEach>
 							</select>
 						</div>
@@ -80,7 +79,7 @@
 							<label>Tag</label> 
 							<select class="form-control" name="tagName">
 								<c:forEach var="item" items="${tags}">
-									<option>${ item.name }</option>
+									<option value="${ item.id }">${ item.name }</option>
 								</c:forEach>
 							</select>
 						</div>

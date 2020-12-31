@@ -41,7 +41,8 @@
 					 	 method="POST">
 
 						<div class="form-group">
-							<label>Name</label> <input class="form-control" type="text" name="name" value="${cat.name }"/>
+							<label>Name</label> 
+							<input class="form-control" type="text" name="name" value="${cat.name }"/>
 						</div>
 
 						<div class="form-group">

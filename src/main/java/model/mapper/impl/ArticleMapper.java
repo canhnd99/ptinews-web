@@ -45,6 +45,15 @@ public class ArticleMapper implements RowMapper<Article> {
 			if(rs.getString("status") != null) {
 				article.setStatus(rs.getString("status"));
 			}
+			if(rs.getString("event") != null) {
+				article.setEvent(rs.getString("event"));
+			}
+			if(rs.getString("sticky") != null) {
+				article.setSticky(rs.getString("sticky"));
+			}
+			if(rs.getInt("liked") != -1) {
+				article.setLiked(rs.getInt("liked"));
+			}
 			if(rs.getString("tbl_user_id") != null) {
 				User user = new User();
 				user.setId(rs.getString("tbl_user_id"));

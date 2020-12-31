@@ -30,6 +30,7 @@ public class CategoryDAO extends BaseDAO<Category> implements ICategoryDAO{
 	@Override
 	public Category findCategoryById(Category cat) {
 		StringBuilder sql = new StringBuilder("SELECT * FROM tbl_category WHERE id = ?");
+		
 		return find(sql.toString(), new CategoryMapper(), cat.getId()).get(0);
 	}
 
