@@ -28,8 +28,7 @@ public class SignupController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		RequestDispatcher rd = req.getRequestDispatcher("/views/web/signup.jsp");
-		rd.forward(req, resp);
+		showSignupForm(req, resp);
 	}
 	
 	@Override
@@ -38,8 +37,20 @@ public class SignupController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		User user = FormUtil.toModel(User.class, req);
 		if(user != null) {
-			userService.add(user);
+			boolean check = userService.add(user);
+			if(check){
+				req.setAttribute("success_message", "Register successfully!");
+			} else req.setAttribute("err_message", "Some error happend!");
+		} else {
+			req.setAttribute("err_message", "Form is not fill");
 		}
+		showSignupForm(req, resp);
 	}
+	
+	public void showSignupForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		RequestDispatcher rd = req.getRequestDispatcher("/views/web/signup.jsp");
+		rd.forward(req, resp);
+	}
+	
 }
 

@@ -18,4 +18,7 @@ public interface ICategoryService {
 	List<Category> listCategory();
 
 	boolean deleteCategoryById(Category cat);
+	int count();
+	List<Category> paginationCategory(int limit, int offset);
+	
 }

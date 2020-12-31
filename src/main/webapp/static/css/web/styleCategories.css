@@ -139,15 +139,23 @@ body #content{
     float: left;
 }
 #content .older-news .col1 .img{
-    width: 230px;
+    width: 30%;
     float: left;
-    margin-right: 50px;
 }
+
+#content .older-news .col1 .desc{
+	float: right;
+    width: 68.5%;
+}
+
 #content .older-news .col1 .img img{
     width: 100%;
     float: left;
     object-fit: cover;
 }
+
+
+
 .list-news .desc a{
     text-decoration: none;
     color: #000000;
@@ -158,7 +166,8 @@ body #content{
     color: #000000;
     font-size: 18px;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
+    margin-top: -6px;
     width: 100%;
 }
 .list-news .title-news a{

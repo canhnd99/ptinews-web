@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.IArticleDAO;
 import model.Article;
+import model.Category;
 import model.mapper.impl.ArticleMapper;
 
 public class ArticleDAO extends BaseDAO<Article> implements IArticleDAO {
@@ -65,4 +66,33 @@ public class ArticleDAO extends BaseDAO<Article> implements IArticleDAO {
 		sql.append("WHERE id=?");
 		return update(sql.toString(), article.getTitle());
 	}
+
+
+	@Override
+	public List<Article> getEventArticle(int quantity) {
+		StringBuilder sql = new StringBuilder("SELECT * FROM tbl_article WHERE event='checked' ORDER BY created_date DESC LIMIT ?");
+		//SELECT * FROM tbl_article WHERE event='checked' ORDER BY created_date DESC LIMIT 2;
+		return find(sql.toString(), new ArticleMapper(), quantity);
+	}
+
+	@Override
+	public List<Article> getStickyArticle(int quantity) {
+		// SELECT * FROM tbl_article WHERE sticky='checked' ORDER BY created_date DESC LIMIT 2;
+		StringBuilder sql = new StringBuilder("SELECT * FROM tbl_article WHERE sticky='checked' ORDER BY created_date DESC LIMIT ?");
+		return find(sql.toString(), new ArticleMapper(), quantity);
+	}
+
+	@Override
+	public List<Article> getLastestArticle(int quantity, int offset) {
+		StringBuilder sql = new StringBuilder("SELECT * FROM tbl_article ORDER BY created_date DESC LIMIT ? OFFSET ?");
+		return find(sql.toString(), new ArticleMapper(), quantity, offset);
+	}
+
+	@Override
+	public List<Article> getArticleByCategoryId(Category cat, int quantity) {
+//		SELECT * FROM tbl_article WHERE tbl_category_id = 'b6578f38-a071-4bdd-8ed7-08435647900d' ORDER BY created_date DESC LIMIT 3
+		StringBuilder sql = new StringBuilder("SELECT * FROM tbl_article WHERE tbl_category_id = ? ORDER BY created_date DESC LIMIT ?");
+		return find(sql.toString(), new ArticleMapper(), cat.getId(), quantity);
+	}
+	
 }

@@ -65,7 +65,7 @@ public class ArticleController extends HttpServlet {
 			cat.setName(article.getCategoryName());
 			cat = categoryService.findCategoryByName(cat);
 			article.setCategory(cat);
-			User user = (User) SessionUtil.getInstance().getValue(req, "ADMIN");
+			User user = (User) SessionUtil.getInstance().getValue(req, "user");
 			article.setUser(user);
 			articleService.add(article);
 			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/post_list.jsp");

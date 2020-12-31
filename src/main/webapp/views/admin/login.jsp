@@ -78,16 +78,16 @@ span.psw {
 	</c:if>
 	<form action="<c:url value='/login'/>" method="POST" class="form-padding" id="form-login">
 		<div class="imgcontainer">
-			<img style="width: 100px; max-width: 100px" src="../image/user.png"
+			<img style="width: 100px; max-width: 100px" src="<c:url value='/static/image/user.png'/>"
 				alt="Avatar" class="avatar">
 		</div>
 
 		<div class="container">
 			<label for="uname"><b>Email</b></label> <input type="text"
-				placeholder="Enter email" name="email" required value="canhnd15@gmail.com">
+				placeholder="Enter email" name="email" required value="hieupq@gmail.com">
 
 			<label for="psw"><b>Password</b></label> <input type="password"
-				placeholder="Enter Password" name="password" required value="canhnd15@">
+				placeholder="Enter Password" name="password" required value="123@aaa">
 
 			<button type="submit">Login</button>
 		</div>

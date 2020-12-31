@@ -33,7 +33,9 @@
 				<div class="container">
 
 					<h2 class="mb-2" align="center">Category management</h2>
-
+					
+					<h4 align="center"> <a href="<c:url value='/admin/categories'/>?action=create" class="p-10 block"> New category </a> </h4> 
+					
 					<c:if test="${ success_message != null }">
 						<div class="alert alert-success" align="center">
 							${success_message}</div>
@@ -69,6 +71,24 @@
 							</tr>
 						</c:forEach>
 					</table>
+					
+					<c:if test="${ totalPage!=null && totalPage > 1}">
+			          <div class="pagination mt-2 mb-2" align="center">
+			          	<c:forEach begin="1" end="${totalPage }" varStatus="num">
+			          		<c:if test="${num.index!=currentPage }">
+					          	<a href="${pageContext.request.contextPath}/admin/categories?action=list&page=${num.index}"> 
+						          	<button class="button-paginate"> ${num.index } </button> 
+					          	</a>
+				          	</c:if>
+				          	
+				          	<c:if test="${num.index==currentPage }"> 
+				          		<button class="button-paginate" style="background-color: red; color:white"> ${num.index } </button>
+				          	</c:if>
+				          	
+			          	</c:forEach>
+			          </div>
+		          </c:if>
+					
 				</div>
 			</div>
 

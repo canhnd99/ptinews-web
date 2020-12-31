@@ -6,121 +6,32 @@
 <head>
 <meta charset="UTF-8">
 <title>Đăng Ký</title>
-<link rel="stylesheet" href='<c:url value="/static/css/style.css"/>'>
-<link rel="stylesheet" href='<c:url value="/static/css/font-awesome.min.css"/>'>
-<link rel="stylesheet" href='<c:url value="/static/css/icomoon.css"/>'>
-<link rel="stylesheet" href='<c:url value="/static/css/poppin.css"/>'>
-<link rel="stylesheet" href='<c:url value="/static/css/themify-icons.css"/>'>
-<link rel="stylesheet" href='<c:url value="/static/css/flaticon.css"/>'>
-<link rel="stylesheet" href='<c:url value="/static/css/styleSigup.css"/>'>
+<link rel="stylesheet" href='<c:url value="/static/css/web/style.css"/>'>
+<link rel="stylesheet" href='<c:url value="/static/css/web/font-awesome.min.css"/>'>
+<link rel="stylesheet" href='<c:url value="/static/css/web/icomoon.css"/>'>
+<link rel="stylesheet" href='<c:url value="/static/css/web/poppin.css"/>'>
+<link rel="stylesheet" href='<c:url value="/static/css/web/themify-icons.css"/>'>
+<link rel="stylesheet" href='<c:url value="/static/css/web/flaticon.css"/>'>
+<link rel="stylesheet" href='<c:url value="/static/css/web/styleSigup.css"/>'>
 </head>
 <body>
 	<div class="container">
-        <div id="header">
-            <div class="header-content">
-                <div class="header-top">
-                    <a href="<c:url value='/trang-chu'/>">
-                        <img src="./static/image/logo.png" alt="logo">
-                    </a>
-                    <div class="right">
-                        <button type="submit" id="loginBtn" class="btn-login">Đăng nhập</button>
-                        <a href="<c:url value='/dang-ky'/>" class="btn-sigup">Đăng ký</a>
-                        <div class="header-search">
-                            <input type="text" placeholder="Tìm kiếm tin tức">
-                            <span class="ti-search"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="header-menu">
-                    <ul>
-                        <li><a href="<c:url value='/trang-chu'/>">Trang chủ</a></li>
-                        <li class="drop">
-                        	<a class="dropbtn" href="<c:url value='/kinh-doanh'/>">Kinh Doanh</a>
-                            <div class="dropdown-content">
-                                <a href="#">Tài chính đầu tư</a>
-                                <a href="#">Thị trường</a>
-                                <a href="#">Doanh nghiệp</a>
-                                <a href="#">Bảo hiểm</a>
-                                <a href="#">Y tế</a>
-                            </div>
-                        </li>
-                        <li class="drop">
-                            <a class="dropbtn" href="">Chính trị</a>
-                            <div class="dropdown-content">
-                                <a href="#">Trong nước</a>
-                                <a href="#">Quốc tế</a>
-                            </div>
-                        </li>
-                        <li class="drop">
-                            <a class="dropbtn" href="">Văn hóa</a>
-                            <div class="dropdown-content">
-                                <a href="#">Du lịch</a>
-                                <a href="#">Ẩm thực</a>
-                                <a href="#">Sự kiện</a>
-                            </div>
-                        </li>
-                        <li class="drop">
-                            <a class="dropbtn" href="">Xã hội</a>
-                            <div class="dropdown-content">
-                                <a href="#">Môi trường</a>
-                                <a href="#">Giao thông</a>
-                                <a href="#">Đời sống</a>
-                            </div>
-                        </li>
-                        <li class="drop">
-                            <a class="dropbtn" href="">Giải trí</a>
-                            <div class="dropdown-content">
-                                <a href="#">Hài</a>
-                                <a href="#">Thời trang</a>
-                                <a href="#">Sao Việt</a>
-                            </div>
-                        </li>
-                        <li class="drop">
-                            <a class="dropbtn" href="">Nghệ thuật</a>
-                            <div class="dropdown-content">
-                                <a href="#">Phim-Điện ảnh</a>
-                                <a href="#">Kiến trúc</a>
-                                <a href="#">Âm nhạc</a>
-                            </div>
-                        </li>
-                        <li class="drop">
-                            <a class="dropbtn" href="">Thể thao</a>
-                            <div class="dropdown-content">
-                                <a href="#">Bóng đá châu Á</a>
-                                <a href="#">Bóng đá châu Âu</a>
-                                <a href="#">Thể thao khácp</a>
-                            </div>
-                        </li>
-                        <li class="drop">
-                            <a class="dropbtn" href="">Sức khỏe</a>
-                            <div class="dropdown-content">
-                                <a href="#">Bệnh viện-Phòng khám</a>
-                                <a href="#">Covid 19</a>
-                                <a href="#">Ung thư</a>
-                            </div>
-                        </li>
-                        <li class="drop">
-                            <a class="dropbtn" href="">Pháp luật</a>
-                            <div class="dropdown-content">
-                                <a href="#">Vụ án mới</a>
-                                <a href="#">Trọng án</a>
-                                <a href="#">Kỳ án</a>
-                            </div>
-                        </li>
-                        <li class="drop">
-                            <a class="dropbtn" href="">Giáo dục</a>
-                            <div class="dropdown-content">
-                                <a href="#">Đào tạo</a>
-                                <a href="#">Học bổng du học</a>
-                                <a href="#">Tuyển sinh</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+	
+        <jsp:directive.include file="header.jsp" />
+        
         <div id="content">
             <h2>Đăng ký tài khoản PTIN</h2>
+            
+            		<c:if test="${ success_message != null }">
+						<div class="alert alert-success" align="center">
+							${success_message}</div>
+					</c:if>
+
+					<c:if test="${ err_message != null }">
+						<div class="alert alert-danger" align="center">
+							${err_message}</div>
+					</c:if>
+            
             <div class="frm">
                 <form action="<c:url value='/dang-ky'/>" method="post">
                     <label for="username"><b>Tên đăng nhập</b></label>
@@ -217,34 +128,9 @@
             </div>
         </div>
     </div>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3>Đăng nhập</h3>
-            <form action="#" name="flogin" action="">
-                <div class="field">
-                    <span class="fa fa-user" aria-hidden="true"></span>
-                    <input type="text" placeholder="Tên đăng nhập" name="uname" id="username">
-                </div>
-                <div class="field space">
-                    <span class="fa fa-lock" aria-hidden="true"></span>
-                    <input type="password" placeholder="Mật khẩu" name="pass" id="pass">
-                </div>
-                <div class="forget">
-                    <a href="#">Quên mật khẩu?</a>
-                </div>
-                <div class="login">
-                    <div class="sub">
-                        <input type="button" value ="Đăng nhập" id="submit">
-                    </div>
-                </div>
-                <div class="signup">
-                    <span>Chưa có tài khoản?</span>
-                    <a href="sigup.html">Đăng kí</a>
-                </div>
-            </form>
-        </div>
-    </div>
+    
+   <jsp:directive.include file="form-login.jsp" />
+    
     <script src="<c:url value='static/js/script.js'/>"></script>
 </body>
 </html>

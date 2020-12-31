@@ -8,10 +8,10 @@
 		
 			
 		<div class="list-group-item list-group-item-action bg-light nav-item ">
-			<b> Posts </b>
+			<b> Articles </b>
 			<div class="mt-2">
-				<a href="<c:url value='/admin/articles'/>?action=create" class="border-bottom p-10 block list-group-item-action"> New post</a> 
-				<a href="<c:url value='/admin/articles'/>" class="p-10 block list-group-item-action"> List posts </a>
+				<a href="<c:url value='/admin/articles'/>?action=create" class="border-bottom p-10 block list-group-item-action"> New article</a> 
+				<a href="<c:url value='/admin/articles'/>" class="p-10 block list-group-item-action"> List articles </a>
 			</div>
 		</div>
 
@@ -42,7 +42,7 @@
         <div class="list-group-item list-group-item-action bg-light nav-item ">  
           <b>Comment</b> 
           <div class="mt-2">
-            <a href="list-comment" class="p-10 block list-group-item-action"> List comments</a>
+            <a href="<c:url value='/admin/comments'/>?action=list" class="p-10 block list-group-item-action"> List comments</a>
           </div>
         </div>
         

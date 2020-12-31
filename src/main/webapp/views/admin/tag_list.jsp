@@ -35,7 +35,9 @@
 
         <div class="container">
           
-          <h2 class="mb-2" align="center">list tag</h2>
+          <h2 class="mb-2" align="center">Tag management</h2>
+          
+          <h3 align="center"><a href="<c:url value='/admin/tags'/>?action=create" class="p-10 block"> New tag</a></h3>
           
           <c:if test="${ success_message != null }"> 
 				<div class="alert alert-success" align="center">

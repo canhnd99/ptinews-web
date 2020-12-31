@@ -7,6 +7,7 @@ import java.util.UUID;
 import dao.IArticleDAO;
 import dao.impl.ArticleDAO;
 import model.Article;
+import model.Category;
 import model.service.IArticleService;
 import model.service.ICategoryService;
 import model.service.IUserService;
@@ -85,4 +86,25 @@ public class ArticleService implements IArticleService {
 		}
 		return false;
 	}
+
+	@Override
+	public List<Article> getLastestArticle(int quantity, int offset) {
+		return articleDAO.getLastestArticle(quantity, offset);
+	}
+
+	@Override
+	public List<Article> getEventArticle(int quantity) {
+		return articleDAO.getEventArticle(quantity);
+	}
+
+	@Override
+	public List<Article> getStickyArticle(int quantity) {
+		return articleDAO.getStickyArticle(quantity);
+	}
+
+	@Override
+	public List<Article> getArticleByCategoryId(Category cat, int quantity) {
+		return articleDAO.getArticleByCategoryId(cat, quantity);
+	}
+
 }

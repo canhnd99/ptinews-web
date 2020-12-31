@@ -33,19 +33,14 @@
 		<div id="page-content-wrapper">
 
 			<jsp:directive.include file="header.jsp" />
-			<!-- HEADER -->
 
-			<!-- MAIN CONTENT -->
 			<div>
-
 				<div class="container">
 
-					<h2 class="mb-2" align="center">Posts Form</h2>
+					<h2 class="mb-2" align="center">Article Form</h2>
 
-
-					<form action="<c:url value='/admin/articles'/>?action=create"
-						method="post">
-						<!-- NHỚ THÊM ENCRYPT = MULTIPART/FORM DATA -->
+					<form action="<c:url value='/admin/articles'/>?action=create" 
+						method="post" enctype="multipart/form-data">
 
 						<div class="form-group">
 							<label>Title</label> <input class="form-control" value=""
@@ -71,7 +66,7 @@
 							<label>Category</label> 
 							<select class="form-control" name="categoryName">
 								<c:forEach var="item" items="${categories}">
-									<option>${ item.name }</option>
+									<option value="${item.id }">${ item.name }</option>
 								</c:forEach>
 							</select>
 						</div>
@@ -79,8 +74,9 @@
 						<div class="form-group">
 							<label>Tag</label> 
 							<select class="form-control" name="tagName">
+								<option></option>
 								<c:forEach var="item" items="${tags}">
-									<option>${ item.name }</option>
+									<option value=${item.id}>${ item.name }</option>
 								</c:forEach>
 							</select>
 						</div>
@@ -98,9 +94,9 @@
 						<div class="form-group">
 
 							<label>Status</label> <select class="form-control" name="status">
-								<option>draft (default)</option>
-								<option>published</option>
-								<option>trashed</option>
+								<option value="draft">draft</option>
+								<option value="published">published</option>
+								<option value="trashed">trashed</option>
 							</select>
 
 						</div>
@@ -112,8 +108,6 @@
 						</div>
 
 					</form>
-
-
 
 				</div>
 
