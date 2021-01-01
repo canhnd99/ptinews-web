@@ -93,7 +93,7 @@ public class ArticleController extends HttpServlet {
 		cat = categoryService.findCategoryById(cat);
 		article.setCategory(cat);
 
-		User user = (User) SessionUtil.getInstance().getValue(req, "ADMIN");
+		User user = (User) SessionUtil.getInstance().getValue(req, "user");
 		article.setUser(user);
 
 		if (action != null) {

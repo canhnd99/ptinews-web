@@ -6,8 +6,7 @@
 <head>
 
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -37,12 +36,15 @@
 
 					<h2 class="mb-2" align="center">Users management</h2>
 
-					<h3 align="center"><a href="<c:url value='/admin/users'/>?action=create" class="p-10 block"> New user</a></h3> 
-					
+					<h3 align="center">
+						<a href="<c:url value='/admin/users'/>?action=create"
+							class="p-10 block"> New user</a>
+					</h3>
+
 					<c:if test="${ err_message != null }">
 						<div class="alert alert-danger" role="alert">${err_message}</div>
 					</c:if>
-	
+
 					<c:if test="${ success_message != null }">
 						<div class="alert alert-success" role="alert">
 							${success_message}</div>
@@ -55,6 +57,7 @@
 							<th>ID</th>
 							<th>Username</th>
 							<th>Email</th>
+							<th>Is Admin</th>
 							<th>Status</th>
 							<th>Action</th>
 						</tr>
@@ -65,17 +68,15 @@
 								<td>${ user.id }</td>
 								<td>${ user.username }</td>
 								<td>${ user.email }</td>
+								<td>${ user.isAdmin }</td>
 								<td>${ user.status }</td>
 								<td><a class="btn" href="edit?id=${user.id }">Edit</a>
-									<button class="btn" onclick="delete(${user.id})">Delete</button>
+									<button class="btn" onclick="confirmDelete('${user.id}')">Delete</button>
 								</td>
 							</tr>
 						</c:forEach>
-
 					</table>
-
 				</div>
-
 			</div>
 
 			<jsp:directive.include file="footer.jsp" />
@@ -85,24 +86,19 @@
 	</div>
 
 	<!-- Menu Toggle Script -->
-	<script>
-  
-    function myFunction() {
-       var element1 = document.getElementById("navbarDropdown");
-       var element2 = document.getElementById("menu-target");
-       element1.classList.toggle("show");
-       element2.classList.toggle("show");
-       
-    }
-  	
-    function deleteUser(id){
-    	if ( confirm('Are u sure delete user with ID = ' + id + '?') ){
-			window.location.href = 'delete-user?id=' + id ;
+	<script type="text/javascript">
+		function myFunction() {
+			var element1 = document.getElementById("navbarDropdown");
+			var element2 = document.getElementById("menu-target");
+			element1.classList.toggle("show");
+			element2.classList.toggle("show");
 		}
-    }
-    
-  </script>
-
+		function confirmDelete(id) {
+			if (confirm('Xóa người dùng có ID là: ' + id + '?')) {
+				window.location.href = '?action=delete&id=' + id;
+			}
+		}
+	</script>
 </body>
 
 </html>

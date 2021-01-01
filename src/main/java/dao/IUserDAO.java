@@ -10,11 +10,11 @@ public interface IUserDAO {
 	
 	int save(User user);
 
-	User findOneByEmail(User user);
+	User findByEmail(String email);
 
-	User findOneById(User user);
+	User findOneById(String id);
 	
-	boolean deleteUser(User user);
+	boolean delete(User user);
 	
-	boolean updateUser(User user);
+	boolean update(User user);
 }

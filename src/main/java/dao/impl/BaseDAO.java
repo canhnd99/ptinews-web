@@ -106,22 +106,6 @@ public class BaseDAO<T> implements IBaseDAO<T> {
 		}
 	}
 	
-	private void close() {
-		try {
-			if (cnt != null) {
-				cnt.close();
-			}
-			if (stm != null) {
-				stm.close();
-			}
-			if (resultSet != null) {
-				resultSet.close();
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
 	@Override
 	public int count(String sql) {
 		
@@ -150,5 +134,21 @@ public class BaseDAO<T> implements IBaseDAO<T> {
 		}
 		
 		return 0;
+	}
+	
+	private void close() {
+		try {
+			if (cnt != null) {
+				cnt.close();
+			}
+			if (stm != null) {
+				stm.close();
+			}
+			if (resultSet != null) {
+				resultSet.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

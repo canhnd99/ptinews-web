@@ -66,30 +66,27 @@ public class UserService implements IUserService {
 
 	@Override
 	public User findOneByEmail(User user) {
-		user = userDao.findOneByEmail(user);
+		user = userDao.findByEmail(user.getEmail());
 		return (user != null) ? user : null;
 	}
 
 	@Override
 	public User findOneById(User user) {
-		user = userDao.findOneById(user);
+		user = userDao.findOneById(user.getId());
 		return (user != null) ? user : null;
 	}
 
 	@Override
 	public boolean delete(User user) {
-		if(user.getEmail() != null) {
-			user = findOneByEmail(user);
-			return (user != null) ? userDao.deleteUser(user) : false;
-		}
-		return false;
+		user = findOneById(user);
+		return (user != null) ? userDao.delete(user) : false;
 	}
 
 	@Override
 	public boolean update(User user) {
 		if(user != null) {
 			user = findOneById(user);
-			return (user != null) ? userDao.updateUser(user) : false;
+			return (user != null) ? userDao.update(user) : false;
 		}
 		return false;
 	}

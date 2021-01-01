@@ -27,31 +27,31 @@ public class UserDAO extends BaseDAO<User> implements IUserDAO {
 	}
 
 	@Override
-	public User findOneByEmail(User user) {
+	public User findByEmail(String email) {
 		StringBuilder sql = new StringBuilder("SELECT id, username, password, salt, email,");
 		sql.append(" isAdmin, status, created_date, last_modified");
 		sql.append(" FROM tbl_user WHERE email = ?");
-		List<User> users = find(sql.toString(), new UserMapper(), user.getEmail());
+		List<User> users = find(sql.toString(), new UserMapper(), email);
 		return (users.size() > 0) ? users.get(0) : null;
 	}
 
 	@Override
-	public User findOneById(User user) {
+	public User findOneById(String id) {
 		StringBuilder sql = new StringBuilder("SELECT id, username, password, salt, email,");
 		sql.append(" isAdmin, status, created_date, last_modified");
 		sql.append(" FROM tbl_user WHERE id = ?");
-		List<User> users = find(sql.toString(), new UserMapper(), user.getId());
+		List<User> users = find(sql.toString(), new UserMapper(), id);
 		return (users.size() > 0) ? users.get(0) : null;
 	}
 
 	@Override
-	public boolean deleteUser(User user) {
+	public boolean delete(User user) {
 		StringBuilder sql = new StringBuilder("DELETE FROM tbl_user WHERE id = ?");
 		return update(sql.toString(), user.getId());
 	}
 
 	@Override
-	public boolean updateUser(User user) {
+	public boolean update(User user) {
 		StringBuilder sql = new StringBuilder("UPDATE tbl_user");
 		sql.append(" SET username=?, password=?, salt=?, email=?, isAdmin=?,");
 		sql.append(" status=?, created_date=?, last_modified=?");

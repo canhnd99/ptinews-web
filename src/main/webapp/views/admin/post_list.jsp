@@ -36,7 +36,7 @@
 					<table id="table-post">
 						<tr>
 							<th>ID</th>
-							<th style="width: 25%">Thumbnail</th>
+							<th style="width: 20%">Thumbnail</th>
 							<th>Title</th>
 							<th>Category</th>
 							<th>By</th>
@@ -46,7 +46,7 @@
 						<c:forEach var="article" items="${articles}"  varStatus="status">
 							<tr>
 								<td>${ status.index + 1 }</td>
-								<td> <img src="<c:url value='/static/image/article/bai-viet-1.jpg'/>" alt="${article.title }" /> </td>
+								<td> <img style="width: 250px; height: 150px" src="<c:url value='${article.thumnail}'/>" alt="${article.title }" /> </td>
 								<td>${ article.title }</td>
 								<td>${ article.category.name }</td>
 								<td>${ article.user.username }</td>
