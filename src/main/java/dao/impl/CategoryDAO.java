@@ -6,6 +6,7 @@ import java.util.List;
 import dao.ICategoryDAO;
 import model.Category;
 import model.mapper.impl.CategoryMapper;
+import model.mapper.impl.CommentMapper;
 
 public class CategoryDAO extends BaseDAO<Category> implements ICategoryDAO{
 
@@ -38,7 +39,7 @@ public class CategoryDAO extends BaseDAO<Category> implements ICategoryDAO{
 	public List<Category> listAllCategory() {
 		
 		List<Category> categories = new ArrayList<>();
-		StringBuilder sql = new StringBuilder("SELECT * FROM tbl_category");
+		StringBuilder sql = new StringBuilder("SELECT * FROM tbl_category ORDER BY name ASC");
 		categories = find(sql.toString(),  new CategoryMapper());
 		
 		return categories;
@@ -61,6 +62,18 @@ public class CategoryDAO extends BaseDAO<Category> implements ICategoryDAO{
 		StringBuilder sql = new StringBuilder("DELETE FROM tbl_category WHERE id = ?");
 		int rs = insert(sql.toString(), cat.getId());
 		return rs > 0;
+	}
+
+	@Override
+	public int count() {
+		StringBuilder sql = new StringBuilder("SELECT COUNT(*) FROM tbl_category");
+		return count(sql.toString());
+	}
+
+	@Override
+	public List<Category> paginationCategory(int limit, int offset) {
+		StringBuilder sql = new StringBuilder("SELECT * FROM tbl_category ORDER BY name DESC LIMIT ? OFFSET ?"); 
+		return find(sql.toString(), new CategoryMapper(), limit, offset);
 	}
 	
 	

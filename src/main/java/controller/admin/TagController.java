@@ -66,9 +66,9 @@ public class TagController extends HttpServlet {
 		String action = request.getParameter("action");
 
 		Tag tag = FormUtil.toModel(Tag.class, request);
-		User loggedUser = (User) request.getSession().getAttribute("ADMIN");
+		User loggedUser = (User) request.getSession().getAttribute("user");
 
-		boolean check = (tag != null && loggedUser != null && tag.getName() != null); // review
+		boolean check = (tag != null && loggedUser != null && tag.getName() != null && loggedUser.getIsAdmin()); // review
 
 		if (action.equalsIgnoreCase("insert") && check) {
 			boolean checkExisted = tagService.checkExisted(tag.getName());

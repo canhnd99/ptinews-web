@@ -7,6 +7,7 @@ import java.util.UUID;
 import dao.IArticleDAO;
 import dao.impl.ArticleDAO;
 import model.Article;
+import model.Category;
 import model.Tag;
 import model.TagArticle;
 import model.service.IArticleService;
@@ -45,8 +46,8 @@ public class ArticleService implements IArticleService {
 	@Override
 	public boolean add(Article article) {
 		if (article != null) {
-			if (article.getUser() != null && article.getCategory() != null && article.getTitle() != null
-					&& !article.getTitle().isEmpty()) {
+			if (article.getUser() != null && article.getCategory() != null 
+					&& article.getTitle() != null && !article.getTitle().isEmpty()) {
 				
 				article.setId(UUID.randomUUID().toString());
 				article.setThumnail(SystemConst.ARTICLE_ROOT_PATH + article.getThumnail());
@@ -54,6 +55,7 @@ public class ArticleService implements IArticleService {
 				if(article.getEvent() == null) {
 					article.setEvent("unchecked");
 				}
+				
 				if(article.getSticky() == null) {
 					article.setSticky("unchecked");
 				}
@@ -106,4 +108,25 @@ public class ArticleService implements IArticleService {
 	public List<Article> findByEvent() {
 		return articleDAO.findByEvent();
 	}
+
+	@Override
+	public List<Article> getLastestArticle(int quantity, int offset) {
+		return articleDAO.getLastestArticle(quantity, offset);
+	}
+
+	@Override
+	public List<Article> getEventArticle(int quantity) {
+		return articleDAO.getEventArticle(quantity);
+	}
+
+	@Override
+	public List<Article> getStickyArticle(int quantity) {
+		return articleDAO.getStickyArticle(quantity);
+	}
+
+	@Override
+	public List<Article> getArticleByCategoryId(Category cat, int quantity) {
+		return articleDAO.getArticleByCategoryId(cat, quantity);
+	}
+
 }

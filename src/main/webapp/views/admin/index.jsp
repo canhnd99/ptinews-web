@@ -33,7 +33,7 @@
 						${success_message}</div>
 				</c:if>
 
-				<h1 class="mt-4">Welcome ${admin.username}, howdy?</h1>
+				<h1 class="mt-4">Welcome ${user.username}, howdy?</h1>
 				<p>The starting state of the menu will appear collapsed on
 					smaller screens, and will appear non-collapsed on larger screens.
 					When toggled using the button below, the menu will change.</p>

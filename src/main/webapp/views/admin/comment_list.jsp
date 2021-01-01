@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
@@ -9,8 +11,8 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+<link href="<c:url value='/static/css/style-admin.css'/>" rel="stylesheet">
+<link href="<c:url value='/static/css/simple-sidebar-admin.css'/>" rel="stylesheet">
 
   <title> Comment management - Admin Dashboard</title>
 
@@ -41,51 +43,47 @@
             
             <tr>
               <th>No</th>
-              <th>ID</th>
+              <th style="width: 30%; max-width: 45%">Content</th>
               <th>By</th>
-              <th>On</th>
+              <th style="width: 30%; max-width: 45%">On</th>
               <th>At</th>
               <th>Action</th>
             </tr>
             
-			<tr>
-              <td>1</td>
-              <td>1</td>
-              <td>Admin</td>
-              <td>What happen are they - who comment in this site?</td>
-              <td>11-11-2020</td>
-              <td>
-                <a class="btn" href="#">Edit</a>  
-                <button class="btn">Delete</button>  
-              </td>
-            </tr>
+            <c:forEach items="${comments}" var="item" varStatus="status"> 
             
-            <tr>
-              <td>2</td>
-              <td>4</td>
-              <td>Nguyen Hong Quan</td>
-              <td>The starting state Pollapsen in India</td>
-              <td>13-09-2020</td>
-              <td>
-                <a class="btn" href="#">Edit</a>  
-                <button class="btn">Delete</button>  
-              </td>
-            </tr>
-            
-            <tr>
-              <td>3</td>
-              <td>27</td>
-              <td>Tran Khanh Lam</td>
-              <td>Make sure to keep all page content within the Make!</td>
-              <td>13-10-2020</td>
-              <td>
-                <a class="btn" href="#">Edit</a>  
-                <button class="btn">Delete</button>  
-              </td>
-            </tr>
-	            
+	            <tr>
+	              <td>${status.index+1 }</td>
+	              <td>${fn:substring(item.content, 0, 80)} <c:if test="${fn:length(item.content) > 80}"> ... </c:if>  </td>
+	              <td>${item.user.username }</td>
+	              <td>${fn:substring(item.article.title, 0, 50)} <c:if test="${fn:length(item.article.title) > 50}"> ... </c:if>  </td>
+	              
+	              <td>${item.createdDate }</td>
+	              <td>
+	                <a class="btn" href="#">Edit</a>  
+	                <button class="btn">Delete</button> 
+	              </td>
+	            </tr>
+            </c:forEach>
 
           </table>
+          
+          <c:if test="${ totalPage!=null && totalPage > 1}">
+	          <div class="pagination mt-2 mb-2" align="center">
+	          	<c:forEach begin="1" end="${totalPage }" varStatus="num">
+	          		<c:if test="${num.index!=currentPage }">
+			          	<a href="${pageContext.request.contextPath}/admin/comments?action=list&page=${num.index}"> 
+				          	<button class="button-paginate"> ${num.index } </button> 
+			          	</a>
+		          	</c:if>
+		          	
+		          	<c:if test="${num.index==currentPage }"> 
+		          		<button class="button-paginate" style="background-color: red; color:white"> ${num.index } </button>
+		          	</c:if>
+		          	
+	          	</c:forEach>
+	          </div>
+          </c:if>
 
         </div>
 

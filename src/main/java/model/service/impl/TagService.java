@@ -32,7 +32,6 @@ public class TagService implements ITagService {
 			if(tag.getUser() != null && tag.getName() != null
 					&& !tag.getName().isEmpty()) {
 				tag.setId(UUID.randomUUID().toString());
-				tag.setStatus(1);
 				tag.setCreatedDate(new Date(System.currentTimeMillis()));
 				tag.setLastModified(new Date(System.currentTimeMillis()));
 				tag.setUser(tag.getUser());

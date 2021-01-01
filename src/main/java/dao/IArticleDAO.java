@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 
 import model.Article;
+import model.Category;
 
 public interface IArticleDAO {
 	List<Article> findAll();
@@ -12,4 +13,9 @@ public interface IArticleDAO {
 	int save(Article article);
 	boolean deleteArticle(String articleId);
 	boolean updateArticle(Article article);
+	List<Article> getLastestArticle(int quantity, int offset);
+	List<Article> getEventArticle(int quantity);
+	List<Article> getStickyArticle(int quantity);
+	List<Article> getArticleByCategoryId(Category cat, int quantity);
+	
 }

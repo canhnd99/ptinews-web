@@ -33,18 +33,20 @@
 			<!-- MAIN CONTENT -->
 			<div>
 
-				<c:if test="${ err_message != null }">
-					<div class="alert alert-danger" role="alert">${err_message}</div>
-				</c:if>
-
-				<c:if test="${ success_message != null }">
-					<div class="alert alert-success" role="alert">
-						${success_message}</div>
-				</c:if>
-
 				<div class="container">
 
 					<h2 class="mb-2" align="center">Users management</h2>
+
+					<h3 align="center"><a href="<c:url value='/admin/users'/>?action=create" class="p-10 block"> New user</a></h3> 
+					
+					<c:if test="${ err_message != null }">
+						<div class="alert alert-danger" role="alert">${err_message}</div>
+					</c:if>
+	
+					<c:if test="${ success_message != null }">
+						<div class="alert alert-success" role="alert">
+							${success_message}</div>
+					</c:if>
 
 					<table id="table-post">
 

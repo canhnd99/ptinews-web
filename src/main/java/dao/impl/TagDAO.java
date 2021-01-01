@@ -10,9 +10,9 @@ public class TagDAO extends BaseDAO<Tag> implements ITagDAO {
 
 	@Override
 	public int save(Tag tag) {
-		StringBuilder sql = new StringBuilder("INSERT INTO tbl_tag (id, name, status, created_date, last_modified, tbl_user_id)");
-		sql.append(" VALUES (?, ?, ?, ?, ?, ?)");
-		return insert(sql.toString(), tag.getId(), tag.getName(), tag.getStatus(), tag.getCreatedDate(),
+		StringBuilder sql = new StringBuilder("INSERT INTO tbl_tag (id, name, created_date, last_modified, tbl_user_id)");
+		sql.append(" VALUES (?, ?, ?, ?, ?)");
+		return insert(sql.toString(), tag.getId(), tag.getName(), tag.getCreatedDate(),
 				tag.getLastModified(), tag.getUser().getId());
 	}
 

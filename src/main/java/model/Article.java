@@ -17,6 +17,10 @@ public class Article extends Base<Article> {
 	
 	public Article() {
 	}
+	
+	public Article(String id) {
+		super.setId(id);
+	}
 
 	public Article(String title, String description, String content, String thumnail,
 			String status, String tag, String event, String sticky, int liked, User user, Category category) {

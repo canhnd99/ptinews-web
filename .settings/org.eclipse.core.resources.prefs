@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/main/java/utils/SessionUtil.java=UTF-8
+encoding//src/main/webapp/views/web/footer.jsp=UTF-8
+encoding//src/main/webapp/views/web/form-login.jsp=UTF-8
+encoding//src/main/webapp/views/web/header.jsp=UTF-8

@@ -30,9 +30,10 @@ public class SigninController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
 		if (action != null && action.equals("logout")) {
-			SessionUtil.getInstance().removeValue(req, "USER");
-			RequestDispatcher rd = req.getRequestDispatcher("/views/home.jsp");
-			rd.forward(req, resp);
+			SessionUtil.getInstance().removeValue(req, "user");
+			resp.sendRedirect(req.getContextPath() );
+//			RequestDispatcher rd = req.getRequestDispatcher("/views/home.jsp");
+//			rd.forward(req, resp);
 		}
 	}
 
@@ -42,10 +43,12 @@ public class SigninController extends HttpServlet {
 		User user = FormUtil.toModel(User.class, req);
 		user = userService.checkLogin(user);
 		if (user != null) {
-			SessionUtil.getInstance().putValue(req, "USER", user);
-			req.setAttribute("loggedUser", SessionUtil.getInstance().getValue(req, "USER"));
-			RequestDispatcher rd = req.getRequestDispatcher("/views/home.jsp");
-			rd.forward(req, resp);
+//			SessionUtil.getInstance().putValue(req, "USER", user);
+//			req.setAttribute("loggedUser", SessionUtil.getInstance().getValue(req, "USER"));
+			req.getSession().setAttribute("user", user);
+			resp.sendRedirect(req.getContextPath() );
+//			RequestDispatcher rd = req.getRequestDispatcher("/views/home.jsp");
+//			rd.forward(req, resp);
 		} else {
 			resp.sendRedirect(req.getContextPath() + "/trang-chu?action=login&message=error_info&alert=danger");
 		}

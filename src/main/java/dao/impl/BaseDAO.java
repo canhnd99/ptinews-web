@@ -121,4 +121,34 @@ public class BaseDAO<T> implements IBaseDAO<T> {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public int count(String sql) {
+		
+		try {
+			cnt = DatabaseUtil.getConnection();
+			cnt.setAutoCommit(false);
+			stm = cnt.prepareStatement(sql);
+			ResultSet rs = stm.executeQuery();
+			cnt.commit();
+			
+			if(rs.next()){
+				return rs.getInt(1);
+			} return 0;
+			
+			
+		} catch (SQLException e) {
+			if (cnt != null) {
+				try {
+					cnt.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		} finally {
+			close();
+		}
+		
+		return 0;
+	}
 }

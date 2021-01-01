@@ -20,10 +20,23 @@
 			<jsp:directive.include file="header.jsp" />
 			<div>
 				<div class="container">
-					<h2 class="mb-2" align="center">Posts management</h2>
+					<h2 class="mb-2" align="center">Articles management</h2>
+					
+					<h3 align="center"> <a href="<c:url value='/admin/articles'/>?action=create" class="p-10 block"> New Article</a> </h3>
+					
+					<c:if test="${ err_message != null }">
+						<div class="alert alert-danger" role="alert">${err_message}</div>
+					</c:if>
+	
+					<c:if test="${ success_message != null }">
+						<div class="alert alert-success" role="alert">
+							${success_message}</div>
+					</c:if>
+					
 					<table id="table-post">
 						<tr>
 							<th>ID</th>
+							<th style="width: 25%">Thumbnail</th>
 							<th>Title</th>
 							<th>Category</th>
 							<th>By</th>
@@ -33,6 +46,7 @@
 						<c:forEach var="article" items="${articles}"  varStatus="status">
 							<tr>
 								<td>${ status.index + 1 }</td>
+								<td> <img src="<c:url value='/static/image/article/bai-viet-1.jpg'/>" alt="${article.title }" /> </td>
 								<td>${ article.title }</td>
 								<td>${ article.category.name }</td>
 								<td>${ article.user.username }</td>

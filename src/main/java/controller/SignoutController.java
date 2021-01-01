@@ -19,8 +19,9 @@ public class SignoutController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		SessionUtil.getInstance().removeValue(req, "USER");
-		RequestDispatcher rd = req.getRequestDispatcher("/views/home.jsp");
-		rd.forward(req, resp);
+		SessionUtil.getInstance().removeValue(req, "user");
+		resp.sendRedirect(req.getContextPath() );
+//		RequestDispatcher rd = req.getRequestDispatcher("/views/home.jsp");
+//		rd.forward(req, resp);
 	}
 }

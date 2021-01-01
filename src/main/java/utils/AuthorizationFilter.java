@@ -34,8 +34,8 @@ public class AuthorizationFilter implements Filter {
 		String uri = request.getRequestURI();
 		String url = uri.substring(request.getContextPath().length(), uri.length());
 		if (url.startsWith("/admin")) {
-			User user = (User) SessionUtil.getInstance().getValue(request, "ADMIN");
-//			User user = (User) request.getSession().getAttribute("admin");
+//			User user = (User) SessionUtil.getInstance().getValue(request, "user");
+			User user = (User) request.getSession().getAttribute("user");
 			if(user != null) {
 				if(user.getIsAdmin() == true) {
 					filterChain.doFilter(servletRequest, servletResponse);

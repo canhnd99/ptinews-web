@@ -26,9 +26,6 @@ public class TagMapper implements RowMapper<Tag> {
 			if (rs.getString("name") != null) {
 				tag.setName(rs.getString("name"));
 			}
-			if (rs.getInt("status") != -1) {
-				tag.setStatus(rs.getInt("status"));
-			}
 			if (rs.getDate("created_date") != null) {
 				tag.setCreatedDate(rs.getDate("created_date"));
 			}

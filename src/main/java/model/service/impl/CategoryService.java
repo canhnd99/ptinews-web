@@ -59,4 +59,14 @@ public class CategoryService implements ICategoryService {
 	public Category findCategoryByName(Category cat) {
 		return catDAO.findCategoryByName(cat.getName());
 	}
+
+	@Override
+	public int count() {
+		return catDAO.count();
+	}
+
+	@Override
+	public List<Category> paginationCategory(int limit, int offset) {
+		return catDAO.paginationCategory(limit, offset);
+	}
 }
