@@ -73,27 +73,27 @@ label {
 				
 				<c:if test="${ updatedUser != null && master == null }">
 					<h2 class="mb-2" align="center">Update User</h2>
-						<form action="<c:url value='/admin/users'/>?action=update" method="post" onsubmit="return validateEditFormInput();">
+						<form action="<c:url value='/admin/users'/>?action=edit" method="post" onsubmit="return validateEditFormInput();">
 							
 							<input type="hidden" type="hidden" name="id" value="${updatedUser.id }" /> 
 	
 							<div class="form-group">
 								<label>Username</label> 
-								<input type="text" class="form-control" name="username" value="${ updatedUser.username }" required/> 
+								<input type="text" class="form-control" disabled name="username" value="${ updatedUser.username }" required/> 
 								<small><i>Can not be change</i></small>
 							</div>
 		
 							<div class="form-group">
 								<label>Email</label> 
-								<input type="email" class="form-control" name="email" value="${updatedUser.email }"  value="${ updatedUser.email }" required/> <small><i>Can not be change</i></small>
+								<input type="email" class="form-control" disabled name="email" value="${updatedUser.email }"  value="${ updatedUser.email }" required/> <small><i>Can not be change</i></small>
 							</div>
-		
+							
 							<div class="form-group">
-								<label>Password</label> 
-								<input class="form-control" value="password" name="password" type="password" required/>
-								<small>
-									<i>Password is require least 7 to 15 characters which contain at least one numeric digit and a special character</i>
-								</small>
+								<label>Status</label>
+								<select class="form-control" name="status" required>
+									<option value="active">active</option>
+									<option value="inactive">inactive</option>
+								</select>
 							</div>
 						
 							<div class="form-group">
@@ -113,36 +113,28 @@ label {
 	
 							<div class="form-group">
 								<label>Username</label> 
-								<input type="text" class="form-control" name="username" value="${ updatedUser.username }" required/> 
+								<input type="text" class="form-control" disabled name="username" value="${ updatedUser.username }"/> 
 								<small><i>Can not be change</i></small>
 							</div>
 		
 							<div class="form-group">
 								<label>Email</label> 
-								<input type="email" class="form-control" name="email" value="${updatedUser.email }"  value="${ updatedUser.email }" required/> <small><i>Can not be change</i></small>
-							</div>
-		
-							<div class="form-group">
-								<label>Password</label> 
-								<input class="form-control" placeholder="New password" name="password" type="password" required/>
-								<small>
-									<i>Password is require least 7 to 15 characters which contain at least one numeric digit and a special character</i>
-								</small>
+								<input type="email" class="form-control" disabled name="email" value="${updatedUser.email }"  value="${ updatedUser.email }" required/> <small><i>Can not be change</i></small>
 							</div>
 							
 							<div class="form-group">
-								<label>Role</label><br>
-								<input type="radio" name="isAdmin" value="true">
-  								<label for="admin">Admin</label><br>
-  								<input type="radio" name="isAdmin" value="false">
-  								<label for="user">User</label><br>
+								<label>Role</label>
+								<select class="form-control" name="isAdmin" required>
+									<option value="true">Admin</option>
+									<option value="false">User</option>
+								</select>
 							</div>
 						
 							<div class="form-group">
 								<label>Status</label>
 								<select class="form-control" name="status" required>
-									<option value="1">active</option>
-									<option value="0">inactive</option>
+									<option value="active">active</option>
+									<option value="inactive">inactive</option>
 								</select>
 							</div>
 							

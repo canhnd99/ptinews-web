@@ -76,10 +76,10 @@
 									<c:if test="${ user.isAdmin == false}">
 										<td>User</td>
 									</c:if>
-									<c:if test="${ user.status == 1}">
+									<c:if test="${ user.status == 'active'}">
 										<td>Active</td>
 									</c:if>
-									<c:if test="${ user.status == 0}">
+									<c:if test="${ user.status == 'inactive'}">
 										<td>Inactive</td>
 									</c:if>
 									<td>${ user.createdDate }</td>
@@ -103,10 +103,10 @@
 										<c:if test="${ user.isAdmin == false}">
 											<td>User</td>
 										</c:if>
-										<c:if test="${ user.status == 1}">
+										<c:if test="${ user.status == 'active'}">
 											<td>Active</td>
 										</c:if>
-										<c:if test="${ user.status == 0}">
+										<c:if test="${ user.status == 'inactive'}">
 											<td>Inactive</td>
 										</c:if>
 										<td>${ user.createdDate }</td>

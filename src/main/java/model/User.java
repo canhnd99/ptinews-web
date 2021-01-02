@@ -7,18 +7,19 @@ public class User extends Base<User> {
 	private String salt;
 	private String email;
 	private boolean isAdmin;
-	private int status;
+	private String status;
 	
 	public User() {
 	}
 	
 	public User(String username, String password, String salt, String email,
-			boolean isAdmin, int status) {
+			boolean isAdmin, String status) {
 		this.username = username;
 		this.password = password;
 		this.salt = salt;
 		this.email = email;
 		this.isAdmin = isAdmin;
+		this.status = status;
 	}
 
 	public String getUsername() {
@@ -61,11 +62,11 @@ public class User extends Base<User> {
 		this.isAdmin = isAdmin;
 	}
 
-	public int getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 }

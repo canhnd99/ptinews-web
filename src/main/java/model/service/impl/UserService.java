@@ -9,6 +9,7 @@ import dao.impl.UserDAO;
 import model.User;
 import model.service.IUserService;
 import utils.PasswordUtil;
+import utils.SystemConst;
 
 public class UserService implements IUserService {
 	
@@ -52,7 +53,7 @@ public class UserService implements IUserService {
 		if(user.getIsAdmin() != true) {
 			user.setAdmin(false);
 		}
-		user.setStatus(1);
+		user.setStatus(SystemConst.ACTIVE_STATUS);
 		user.setCreatedDate(new Date(System.currentTimeMillis()));
 		user.setLastModified(new Date(System.currentTimeMillis()));
 
@@ -84,20 +85,6 @@ public class UserService implements IUserService {
 
 	@Override
 	public boolean update(User user) {
-		String salt = PasswordUtil.getSalt();
-		String hasedPassword = PasswordUtil.getPassword(user.getPassword().toCharArray(), salt.getBytes());
-		user.setSalt(salt);
-		user.setPassword(hasedPassword);
-		if(user.getIsAdmin() == true) {
-			user.setAdmin(true);
-		}else {
-			user.setAdmin(false);
-		}
-		if(user.getStatus() == 1) {
-			user.setStatus(1);
-		}else {
-			user.setStatus(0);
-		}
 		user.setLastModified(new Date(System.currentTimeMillis()));
 		return (user != null) ? userDao.update(user) : false;
 	}

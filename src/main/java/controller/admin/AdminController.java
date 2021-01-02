@@ -33,10 +33,10 @@ public class AdminController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getParameter("action");
-		
-		//get logged user
+
+		// get logged user
 		User loggedAdmin = (User) SessionUtil.getInstance().getValue(req, "user");
-		
+
 		if (action != null) {
 			if (action.equals("create")) {
 				RequestDispatcher rd = req.getRequestDispatcher("/views/admin/user_form_create.jsp");
@@ -45,10 +45,10 @@ public class AdminController extends HttpServlet {
 				String id = req.getParameter("id");
 				User user = new User();
 				user.setId(id);
-				
-				//get updated or deleted user info
+
+				// get updated or deleted user info
 				user = userService.findOneById(user);
-				
+
 				if (action.equals("delete")) {
 					// check mater admin
 					// true: can delete other admin and normal user
@@ -85,17 +85,25 @@ public class AdminController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getParameter("action");
-		
-		//get logged admin
+
+		// get logged admin
 		User loggedAdmin = (User) SessionUtil.getInstance().getValue(req, "user");
-		
+
 		if (action != null && action.equals("create")) {
 			User admin = (User) FormUtil.toModel(User.class, req);
 			admin.setAdmin(true);
 			userService.add(admin);
 		} else if (action != null && action.equals("edit")) {
-			User updatedAdmin = (User) FormUtil.toModel(User.class, req);
-			userService.update(updatedAdmin);
+			User user = (User) FormUtil.toModel(User.class, req);
+			if(loggedAdmin.getEmail().equals("admin@ptinnews.io")) {
+				String isAdmin = req.getParameter("isAdmin");
+				if (isAdmin.equals("true")) {
+					user.setAdmin(true);
+				} else {
+					user.setAdmin(false);
+				}
+			}
+			userService.update(user);
 		}
 		showListUsers(req, resp, users, loggedAdmin);
 	}
