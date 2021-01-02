@@ -47,6 +47,8 @@ public class LoginController extends HttpServlet {
 				req.getSession().setAttribute("user", user);
 				RequestDispatcher rd = req.getRequestDispatcher("/views/admin/index.jsp");
 				rd.forward(req, resp);
+			} else {
+				resp.sendRedirect(req.getContextPath() + "/login?action=login&message=error_info&alert=danger");
 			}
 		} else {
 			resp.sendRedirect(req.getContextPath() + "/login?action=login&message=error_info&alert=danger");

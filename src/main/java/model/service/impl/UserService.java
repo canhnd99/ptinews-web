@@ -84,10 +84,21 @@ public class UserService implements IUserService {
 
 	@Override
 	public boolean update(User user) {
-		if(user != null) {
-			user = findOneById(user);
-			return (user != null) ? userDao.update(user) : false;
+		String salt = PasswordUtil.getSalt();
+		String hasedPassword = PasswordUtil.getPassword(user.getPassword().toCharArray(), salt.getBytes());
+		user.setSalt(salt);
+		user.setPassword(hasedPassword);
+		if(user.getIsAdmin() == true) {
+			user.setAdmin(true);
+		}else {
+			user.setAdmin(false);
 		}
-		return false;
+		if(user.getStatus() == 1) {
+			user.setStatus(1);
+		}else {
+			user.setStatus(0);
+		}
+		user.setLastModified(new Date(System.currentTimeMillis()));
+		return (user != null) ? userDao.update(user) : false;
 	}
 }

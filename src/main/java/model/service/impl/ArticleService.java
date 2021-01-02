@@ -55,7 +55,6 @@ public class ArticleService implements IArticleService {
 				if(article.getEvent() == null) {
 					article.setEvent("unchecked");
 				}
-				
 				if(article.getSticky() == null) {
 					article.setSticky("unchecked");
 				}

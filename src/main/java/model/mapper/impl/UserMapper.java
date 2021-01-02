@@ -37,7 +37,7 @@ public class UserMapper implements RowMapper<User> {
 				user.setCreatedDate(rs.getDate("created_date"));
 			}
 			if(rs.getDate("last_modified") != null) {
-				user.setCreatedDate(rs.getDate("last_modified"));
+				user.setLastModified(rs.getDate("last_modified"));
 			}
 			return user;
 		} catch (SQLException e) {

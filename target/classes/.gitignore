@@ -1,4 +1,5 @@
-/dao/
-/controller/
-/test/
 /model/
+/controller/
+/utils/
+/dao/
+/test/

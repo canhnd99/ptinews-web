@@ -21,4 +21,11 @@ public class DatabaseUtil {
 		}
 		return null;
 	}
+	
+	public static void main(String[] args) {
+		Connection cont = DatabaseUtil.getConnection();
+		if(cont != null) {
+			System.out.println("OK");
+		}
+	}
 }

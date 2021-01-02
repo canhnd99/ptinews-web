@@ -54,10 +54,10 @@ public class UserDAO extends BaseDAO<User> implements IUserDAO {
 	public boolean update(User user) {
 		StringBuilder sql = new StringBuilder("UPDATE tbl_user");
 		sql.append(" SET username=?, password=?, salt=?, email=?, isAdmin=?,");
-		sql.append(" status=?, created_date=?, last_modified=?");
+		sql.append(" status=?, last_modified=?");
 		sql.append(" WHERE id=?");
 		return update(sql.toString(), user.getUsername(), user.getPassword(), user.getSalt(),
-				user.getEmail(), user.getStatus(), user.getCreatedDate(), user.getLastModified(),
+				user.getEmail(), user.getIsAdmin(), user.getStatus(), user.getLastModified(),
 				user.getId());
 	}
 }

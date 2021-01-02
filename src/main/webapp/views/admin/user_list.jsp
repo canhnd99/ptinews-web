@@ -34,7 +34,7 @@
 
 				<div class="container">
 
-					<h2 class="mb-2" align="center">Users management</h2>
+					<h2 class="mb-2" align="center">Users Management</h2>
 
 					<h3 align="center">
 						<a href="<c:url value='/admin/users'/>?action=create"
@@ -53,34 +53,81 @@
 					<table id="table-post">
 
 						<tr>
-							<th>No</th>
-							<th>ID</th>
-							<th>Username</th>
-							<th>Email</th>
-							<th>Is Admin</th>
-							<th>Status</th>
-							<th>Action</th>
+							<th style="text-align: center;">No</th>
+							<th style="text-align: center;">Username</th>
+							<th style="text-align: center;">Email</th>
+							<th style="text-align: center;">Role</th>
+							<th style="text-align: center;">Status</th>
+							<th style="text-align: center;">Created Date</th>
+							<th style="text-align: center;">Last Modified</th>
+							<th style="text-align: center;">Action</th>
 						</tr>
 
 						<c:forEach var="user" items="${users}" varStatus="status">
-							<tr>
-								<td>${ status.index+1}</td>
-								<td>${ user.id }</td>
-								<td>${ user.username }</td>
-								<td>${ user.email }</td>
-								<td>${ user.isAdmin }</td>
-								<td>${ user.status }</td>
-								<td><a class="btn" href="edit?id=${user.id }">Edit</a>
-									<button class="btn" onclick="confirmDelete('${user.id}')">Delete</button>
-								</td>
-							</tr>
+							
+							<c:if test="${ loggedAdmin.email.equals('admin@ptinnews.io') }">
+								<tr>
+									<td>${ status.index+1}</td>
+									<td>${ user.username }</td>
+									<td>${ user.email }</td>
+									<c:if test="${ user.isAdmin == true}">
+										<td>Admin</td>
+									</c:if>
+									<c:if test="${ user.isAdmin == false}">
+										<td>User</td>
+									</c:if>
+									<c:if test="${ user.status == 1}">
+										<td>Active</td>
+									</c:if>
+									<c:if test="${ user.status == 0}">
+										<td>Inactive</td>
+									</c:if>
+									<td>${ user.createdDate }</td>
+									<td>${ user.lastModified }</td>
+									<td>
+										<a class="btn" href="?action=edit&id=${ user.id }"><button>Edit</button></a>
+										<button style="height: 30px; margin-top: 10px" onclick="confirmDelete('${user.id}')">Delete</button>
+									</td>
+								</tr>
+							</c:if>
+							
+							<c:if test="${ !loggedAdmin.email.equals('admin@ptinnews.io') }">
+								<c:if test="${ !user.email.equals('admin@ptinnews.io') }">
+									<tr>
+										<td>${ status.index+1}</td>
+										<td>${ user.username }</td>
+										<td>${ user.email }</td>
+										<c:if test="${ user.isAdmin == true}">
+											<td>Admin</td>
+										</c:if>
+										<c:if test="${ user.isAdmin == false}">
+											<td>User</td>
+										</c:if>
+										<c:if test="${ user.status == 1}">
+											<td>Active</td>
+										</c:if>
+										<c:if test="${ user.status == 0}">
+											<td>Inactive</td>
+										</c:if>
+										<td>${ user.createdDate }</td>
+										<td>${ user.lastModified }</td>
+										<td>
+											<a class="btn" href="?action=edit&id=${ user.id }"><button>Edit</button></a>
+											<c:if test="${ user.isAdmin == true }">
+												<button style="height: 30px; margin-top: 10px" onclick="preventDelete()">Delete</button>
+											</c:if>
+											<c:if test="${ user.isAdmin == false }">
+												<button style="height: 30px; margin-top: 10px" onclick="confirmDelete('${user.id}')">Delete</button>
+											</c:if>
+										</td>
+									</tr>
+								</c:if>
+							</c:if>
 						</c:forEach>
 					</table>
 				</div>
 			</div>
-
 			<jsp:directive.include file="footer.jsp" />
-
 		</div>
 
 	</div>
@@ -97,6 +144,9 @@
 			if (confirm('Xóa người dùng có ID là: ' + id + '?')) {
 				window.location.href = '?action=delete&id=' + id;
 			}
+		}
+		function preventDelete() {
+			alert("Bạn không có quyền xóa người dùng này!");
 		}
 	</script>
 </body>
