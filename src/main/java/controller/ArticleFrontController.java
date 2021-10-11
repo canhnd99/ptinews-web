@@ -46,6 +46,9 @@ public class ArticleFrontController extends HttpServlet {
 				showArticleForm(request, response);
 			} else{
 				
+				
+				
+				
 			}
 			
 		}
